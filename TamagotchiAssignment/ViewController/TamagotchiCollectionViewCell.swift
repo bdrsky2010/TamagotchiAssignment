@@ -23,8 +23,8 @@ final class TamagotchiCollectionViewCell: UICollectionViewCell, ConfigureViewPro
     
     let nameBackgroundView: UIView = {
         let view = UIView()
-        view.layer.borderWidth = 0.9
-        view.layer.borderColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1).cgColor
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.tamagotchiBorderColor.cgColor
         view.layer.cornerRadius = 5
         return view
     }()
@@ -33,7 +33,7 @@ final class TamagotchiCollectionViewCell: UICollectionViewCell, ConfigureViewPro
         let label = UILabel()
         label.text = "준비중이에요"
         label.font = .systemFont(ofSize: 11, weight: .bold)
-        label.textColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
+        label.textColor = UIColor.tamagotchiBorderColor
         label.backgroundColor = .clear
         
         return label
@@ -76,7 +76,7 @@ final class TamagotchiCollectionViewCell: UICollectionViewCell, ConfigureViewPro
     func configureContent() {
         guard let tamagotchi, tamagotchi.isAvailable else { return }
         
-        tamagotchiImageView.image = UIImage(named: tamagotchi.id + "-" + tamagotchi.stringLevel)
+        tamagotchiImageView.image = UIImage(named: tamagotchi.id + "-6")
         nameLabel.text = tamagotchi.name
     }
 }
