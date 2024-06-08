@@ -79,8 +79,6 @@ class TamagotchiPopupViewController: UIViewController, ConfigureViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .clear
-        
         configureHierarchy()
         configureLayout()
         configureContent()

@@ -73,6 +73,11 @@ extension TamagotchiViewController: UICollectionViewDelegateFlowLayout {
         if tamagotchi.isAvailable {
             let tamagotchiPopupViewController = TamagotchiPopupViewController()
             tamagotchiPopupViewController.tamagotchi = tamagotchies[indexPath.row]
+            
+            // MARK: fullScreen vs overFullScreen
+            // 'fullScreen'은 부모뷰를 모달 뷰가 다 가려버리는 modal style
+            // 'overFullScreen'은 fullScreen처럼 모달 뷰가 다 가리긴하지만 배경색이 투명해지며
+            // 부모뷰의 일부분이 보임
             tamagotchiPopupViewController.modalPresentationStyle = .overFullScreen
             present(tamagotchiPopupViewController, animated: true)
         }
