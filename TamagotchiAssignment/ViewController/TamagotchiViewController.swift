@@ -16,6 +16,12 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     
     private var tamagotchies: [Tamagotchi] = []
     
+    public var navigationTitle = "" {
+        didSet {
+            navigationItem.title = navigationTitle
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.tamagotchiBackgroundColor
