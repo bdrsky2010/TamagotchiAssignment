@@ -16,13 +16,10 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     
     private var tamagotchies: [Tamagotchi] = []
     
-    public var navigationTitle = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
-        
-        navigationItem.title = navigationTitle
+        view.backgroundColor = UIColor.tamagotchiBackgroundColor
+        print(#function)
         
         tamagotchies = userDefaultsHelper.getTamagochi()
         
@@ -62,12 +59,17 @@ extension TamagotchiViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: height)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        print(#function, indexPath.row)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(#function, indexPath.row)
+        
+        let tamagotchi = tamagotchies[indexPath.row]
+        
+        if tamagotchi.isAvailable {
+            let tamagotchiPopupViewController = TamagotchiPopupViewController()
+            tamagotchiPopupViewController.tamagotchi = tamagotchies[indexPath.row]
+            tamagotchiPopupViewController.modalPresentationStyle = .overFullScreen
+            present(tamagotchiPopupViewController, animated: true)
+        }
     }
 }
 
