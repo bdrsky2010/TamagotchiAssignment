@@ -22,9 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         let tamagotchiViewController = TamagotchiViewController()
-        tamagotchiViewController.navigationTitle = "다마고치 선택하기"
         
         let navigationController = UINavigationController(rootViewController: TamagotchiViewController())
+        navigationController.navigationBar.topItem?.title = "다마고치 선택하기"
         
         window?.rootViewController = navigationController
         
