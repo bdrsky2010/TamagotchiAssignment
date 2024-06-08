@@ -17,7 +17,6 @@
 		7BD80CDA2C135217001F8E3F /* ConfigureViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CD92C135217001F8E3F /* ConfigureViewProtocol.swift */; };
 		7BD80CDC2C1352A5001F8E3F /* TamagotchiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CDB2C1352A5001F8E3F /* TamagotchiCollectionViewCell.swift */; };
 		7BD80CDF2C135308001F8E3F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7BD80CDE2C135308001F8E3F /* SnapKit */; };
-		7BD80CE22C13531D001F8E3F /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 7BD80CE12C13531D001F8E3F /* Toast */; };
 		7BD80CE42C14821B001F8E3F /* TamagotchiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CE32C14821B001F8E3F /* TamagotchiModel.swift */; };
 		7BD80CE92C1489B4001F8E3F /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CE82C1489B4001F8E3F /* UserDefaultsHelper.swift */; };
 		7BD80CEC2C14988E001F8E3F /* TamagotchiDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CEB2C14988E001F8E3F /* TamagotchiDelegate.swift */; };
@@ -49,7 +48,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BD80CE22C13531D001F8E3F /* Toast in Frameworks */,
 				7BD80CDF2C135308001F8E3F /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,7 +159,6 @@
 			name = TamagotchiAssignment;
 			packageProductDependencies = (
 				7BD80CDE2C135308001F8E3F /* SnapKit */,
-				7BD80CE12C13531D001F8E3F /* Toast */,
 			);
 			productName = TamagotchiAssignment;
 			productReference = 7BD80CBD2C134A01001F8E3F /* TamagotchiAssignment.app */;
@@ -193,7 +190,6 @@
 			mainGroup = 7BD80CB42C134A01001F8E3F;
 			packageReferences = (
 				7BD80CDD2C135308001F8E3F /* XCRemoteSwiftPackageReference "SnapKit" */,
-				7BD80CE02C13531D001F8E3F /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 7BD80CBE2C134A01001F8E3F /* Products */;
 			projectDirPath = "";
@@ -467,14 +463,6 @@
 				minimumVersion = 5.7.1;
 			};
 		};
-		7BD80CE02C13531D001F8E3F /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -482,11 +470,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7BD80CDD2C135308001F8E3F /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		7BD80CE12C13531D001F8E3F /* Toast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7BD80CE02C13531D001F8E3F /* XCRemoteSwiftPackageReference "Toast-Swift" */;
-			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
