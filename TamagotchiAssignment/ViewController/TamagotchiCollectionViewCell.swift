@@ -76,7 +76,7 @@ final class TamagotchiCollectionViewCell: UICollectionViewCell, ConfigureViewPro
     func configureContent() {
         guard let tamagotchi, tamagotchi.isAvailable else { return }
         
-        tamagotchiImageView.image = UIImage(named: tamagotchi.id + "-6")
+        tamagotchiImageView.image = UIImage(named: String(tamagotchi.id) + "-6")
         nameLabel.text = tamagotchi.name
     }
 }
