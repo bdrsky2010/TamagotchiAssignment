@@ -63,7 +63,7 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
 extension TamagotchiSelectViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let margin: CGFloat = 16
+        let margin: CGFloat = 12
         let width: CGFloat = (collectionView.bounds.width - (margin * 6)) / 3
         let height: CGFloat = width * 1.4
         
