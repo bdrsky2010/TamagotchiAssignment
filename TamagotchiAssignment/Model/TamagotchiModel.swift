@@ -7,17 +7,27 @@
 
 import Foundation
 
+struct NotificationCenterName {
+    static let selectButton = "selectButton"
+}
+
+enum TamagotchiSelectType {
+    case select, change
+}
+
 enum TamagotchiType: CaseIterable {
-    case 따끔따끔, 방실방실, 반짝반짝
+    case 따끔따끔
+    case 방실방실
+    case 반짝반짝
     
-    var id: String {
+    var id: Int {
         switch self {
         case .따끔따끔:
-            return "1"
+            return 1
         case .방실방실:
-            return "2"
+            return 2
         case .반짝반짝:
-            return "3"
+            return 3
         }
     }
     
@@ -39,7 +49,7 @@ enum TamagotchiType: CaseIterable {
 
 struct Tamagotchi: Codable {
     let isAvailable: Bool
-    let id: String
+    let id: Int
     let name: String
     let introduce: String
     var rice: Int
@@ -63,7 +73,7 @@ struct Tamagotchi: Codable {
         return String(level)
     }
     
-    init(isAvailable: Bool, id: String, name: String, introduce: String, rice: Int, water: Int) {
+    init(isAvailable: Bool, id: Int, name: String, introduce: String, rice: Int, water: Int) {
         self.isAvailable = isAvailable
         self.id = id
         self.name = name
@@ -72,7 +82,7 @@ struct Tamagotchi: Codable {
         self.water = water
     }
     
-    init(isAvailable: Bool, id: String, name: String, introduce: String) {
+    init(isAvailable: Bool, id: Int, name: String, introduce: String) {
         self.init(isAvailable: isAvailable, id: id, name: name, introduce: introduce, rice: 0, water: 0)
     }
 }
