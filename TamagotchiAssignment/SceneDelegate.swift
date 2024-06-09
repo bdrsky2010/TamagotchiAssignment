@@ -36,6 +36,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                name: NSNotification.Name(rawValue: NotificationCenterName.selectButton),
                                                object: nil)
         
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(resetButtonClicked),
+                                               name: NSNotification.Name(rawValue: NotificationCenterName.resetButton),
+                                               object: nil)
+        
         let navigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.navigationBar.standardAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
         navigationController.navigationBar.barTintColor = UIColor.tamagotchiBorderColor
@@ -48,6 +53,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     @objc
     private func selectButtonClicked(_ sender: UIWindow) {
         let rootViewController = TamagotchiViewController()
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        navigationController.navigationBar.standardAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
+        navigationController.navigationBar.barTintColor = UIColor.tamagotchiBorderColor
+        
+        window?.rootViewController = navigationController
+    }
+    
+    @objc
+    private func resetButtonClicked(_ sender: UIWindow) {
+        let rootViewController = TamagotchiSelectViewController()
+        rootViewController.tamagotchiSelectType = .select
         let navigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.navigationBar.standardAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
         navigationController.navigationBar.barTintColor = UIColor.tamagotchiBorderColor
