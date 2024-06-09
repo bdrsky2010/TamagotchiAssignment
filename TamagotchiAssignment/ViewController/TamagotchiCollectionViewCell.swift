@@ -10,8 +10,6 @@ import SnapKit
 
 final class TamagotchiCollectionViewCell: UICollectionViewCell, ConfigureViewProtocol {
     
-    static let identifier = "TamagotchiCollectionViewCell"
-    
     public var tamagotchi: Tamagotchi?
     
     let tamagotchiImageView: UIImageView = {
