@@ -17,6 +17,7 @@ final class SettingViewController: UIViewController, ConfigureViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.tamagotchiBackgroundColor
         
         settingList = [
             Setting(mainImage: "pencil", mainTitle: "내 이름 설정하기", subTitle: userDefaultsHelper.getNickname()),
@@ -39,8 +40,19 @@ final class SettingViewController: UIViewController, ConfigureViewProtocol {
     }
     
     func configureNavigation() {
-        view.backgroundColor = UIColor.tamagotchiBackgroundColor
+        
         navigationItem.title = "설정"
+        let leftBarButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"),
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(leftBarButtonAction))
+        navigationItem.leftBarButtonItem = leftBarButton
+    }
+    
+    @objc
+    private func leftBarButtonAction() {
+        
+        navigationController?.popViewController(animated: true)
     }
     
     func configureHierarchy() {

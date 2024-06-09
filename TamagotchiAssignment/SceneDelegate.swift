@@ -42,8 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                object: nil)
         
         let navigationController = UINavigationController(rootViewController: rootViewController)
-        navigationController.navigationBar.standardAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
-        navigationController.navigationBar.barTintColor = UIColor.tamagotchiBorderColor
+//        navigationController.navigationBar.standardAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
         
         window?.rootViewController = navigationController
         
@@ -55,7 +54,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let rootViewController = TamagotchiViewController()
         let navigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.navigationBar.standardAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
-        navigationController.navigationBar.barTintColor = UIColor.tamagotchiBorderColor
         
         window?.rootViewController = navigationController
     }
@@ -66,7 +64,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         rootViewController.tamagotchiSelectType = .select
         let navigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.navigationBar.standardAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
-        navigationController.navigationBar.barTintColor = UIColor.tamagotchiBorderColor
         
         window?.rootViewController = navigationController
     }

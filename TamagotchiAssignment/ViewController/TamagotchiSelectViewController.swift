@@ -31,11 +31,11 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.tamagotchiBackgroundColor
-        navigationItem.title = navigationTitle
         
         tamagotchies = userDefaultsHelper.getTamagotchies()
         configureHierarchy()
         configureLayout()
+        configureNavigation()
         configureCollectionView()
     }
     
@@ -49,6 +49,32 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.bottom.equalToSuperview()
         }
+    }
+    
+    func configureNavigation() {
+        navigationItem.title = navigationTitle
+        
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchiBorderColor]
+        navigationBarAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
+        
+        navigationController?.navigationBar.tintColor = UIColor.tamagotchiBorderColor
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        
+        if navigationController?.topViewController != self {
+            let leftBarButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"),
+                                                style: .plain,
+                                                target: self,
+                                                action: #selector(leftBarButtonAction))
+            
+            navigationItem.leftBarButtonItem = leftBarButton
+        }
+    }
+    
+    @objc
+    private func leftBarButtonAction() {
+        
+        navigationController?.popViewController(animated: true)
     }
     
     private func configureCollectionView() {

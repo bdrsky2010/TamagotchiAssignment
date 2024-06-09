@@ -214,6 +214,8 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         navigationItem.title = nickname + "님의 다마고치"
     }
     
+    
+    
     private func configureNotificationCenter() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow),
@@ -244,6 +246,13 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     }
     
     func configureNavigation() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchiBorderColor]
+        navigationBarAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
+        
+        navigationController?.navigationBar.tintColor = UIColor.tamagotchiBorderColor
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"),
                                                  style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
         
