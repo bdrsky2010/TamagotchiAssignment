@@ -11,8 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -21,15 +19,40 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let tamagotchiViewController = TamagotchiViewController()
+        let userDefaultsHelper = UserDefaultsHelper.shared
         
-        tamagotchiViewController.navigationTitle = "다마고치 선택하기"
         
-        let navigationController = UINavigationController(rootViewController: tamagotchiViewController)
+        var rootViewController: UIViewController
+//        rootViewController = TamagotchiViewController()
+        if userDefaultsHelper.getIsNotFirstMeetWithTamagotchi() {
+            rootViewController = TamagotchiViewController()
+        } else {
+            rootViewController = TamagotchiSelectViewController()
+            (rootViewController as! TamagotchiSelectViewController).tamagotchiSelectType = .select
+        }
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(selectButtonClicked),
+                                               name: NSNotification.Name(rawValue: NotificationCenterName.selectButton),
+                                               object: nil)
+        
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        navigationController.navigationBar.standardAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
+        navigationController.navigationBar.barTintColor = UIColor.tamagotchiBorderColor
         
         window?.rootViewController = navigationController
         
         window?.makeKeyAndVisible()
+    }
+    
+    @objc
+    private func selectButtonClicked(_ sender: UIWindow) {
+        let rootViewController = TamagotchiViewController()
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        navigationController.navigationBar.standardAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
+        navigationController.navigationBar.barTintColor = UIColor.tamagotchiBorderColor
+        
+        window?.rootViewController = navigationController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
