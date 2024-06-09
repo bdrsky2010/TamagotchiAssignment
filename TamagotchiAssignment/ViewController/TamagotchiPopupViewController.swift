@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class TamagotchiPopupViewController: UIViewController, ConfigureViewProtocol {
+final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtocol {
 
     let backgroundView: UIView = {
         let view = UIView()
@@ -84,16 +84,6 @@ class TamagotchiPopupViewController: UIViewController, ConfigureViewProtocol {
     let startButton: UIButton = {
         let button = UIButton()
         button.configuration = .plain()
-        button.configurationUpdateHandler = { btn in
-            switch btn.state {
-            case .highlighted:
-                btn.configuration?.attributedTitle = AttributedString(
-                    NSAttributedString(string: "시작하기", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchilightBackgroundColor]))
-            default:
-                btn.configuration?.attributedTitle = AttributedString(
-                    NSAttributedString(string: "시작하기", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchiBorderColor]))
-            }
-        }
         return button
     }()
     
