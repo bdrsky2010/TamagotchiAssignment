@@ -54,13 +54,13 @@ class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         return userDefaultsHelper.getNickname()
     }
     
-    private var tamagotchi: Tamagotchi {
+    private var tamagotchi: Tamagotchi? {
         return userDefaultsHelper.getSelectTamagotchi()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = UIColor.tamagotchiBackgroundColor
         
         configureNavigation()

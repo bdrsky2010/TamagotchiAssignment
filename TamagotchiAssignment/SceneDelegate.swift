@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         var rootViewController: UIViewController
-//        rootViewController = TamagotchiViewController()
+
         if userDefaultsHelper.getIsNotFirstMeetWithTamagotchi() {
             rootViewController = TamagotchiViewController()
         } else {

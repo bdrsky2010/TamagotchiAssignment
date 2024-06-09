@@ -56,15 +56,26 @@ final class UserDefaultsHelper {
         }
     }
     
-    public func getSelectTamagotchi() -> Tamagotchi {
+    public func getSelectTamagotchi() -> Tamagotchi? {
         let id = UserDefaults.standard.integer(forKey: selectTamagotchiKey)
         let tamagotchies = getTamagotchies()
-        return tamagotchies[id]
+        
+        for i in 0..<tamagotchies.count {
+            if tamagotchies[i].id == id {
+                return tamagotchies[i]
+            }
+        }
+        return nil
     }
     
     public func setSelectTamagochi(_ tamagotchi: Tamagotchi) {
         var tamagotchies = getTamagotchies()
-        tamagotchies[tamagotchi.id] = tamagotchi
+        for i in 0..<tamagotchies.count {
+            if tamagotchies[i].id == tamagotchi.id {
+                tamagotchies[i] = tamagotchi
+                break
+            }
+        }
         setTamagotchies(tamagotchies)
         
         UserDefaults.standard.set(tamagotchi.id, forKey: selectTamagotchiKey)
