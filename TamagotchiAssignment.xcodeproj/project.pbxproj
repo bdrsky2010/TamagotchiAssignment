@@ -12,7 +12,7 @@
 		7BD80CC52C134A01001F8E3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CC42C134A01001F8E3F /* ViewController.swift */; };
 		7BD80CCA2C134A02001F8E3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BD80CC92C134A02001F8E3F /* Assets.xcassets */; };
 		7BD80CCD2C134A02001F8E3F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7BD80CCC2C134A02001F8E3F /* Base */; };
-		7BD80CD52C134E55001F8E3F /* TamagotchiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CD42C134E55001F8E3F /* TamagotchiViewController.swift */; };
+		7BD80CD52C134E55001F8E3F /* TamagotchiSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CD42C134E55001F8E3F /* TamagotchiSelectViewController.swift */; };
 		7BD80CD72C134EBF001F8E3F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7BD80CD62C134EBF001F8E3F /* .gitignore */; };
 		7BD80CDA2C135217001F8E3F /* ConfigureViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CD92C135217001F8E3F /* ConfigureViewProtocol.swift */; };
 		7BD80CDC2C1352A5001F8E3F /* TamagotchiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CDB2C1352A5001F8E3F /* TamagotchiCollectionViewCell.swift */; };
@@ -22,6 +22,7 @@
 		7BD80CEC2C14988E001F8E3F /* TamagotchiDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CEB2C14988E001F8E3F /* TamagotchiDelegate.swift */; };
 		7BD80CEE2C14A636001F8E3F /* TamagotchiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CED2C14A636001F8E3F /* TamagotchiPopupViewController.swift */; };
 		7BD80CF12C14A7D1001F8E3F /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CF02C14A7D1001F8E3F /* UIColor+.swift */; };
+		7BD80CF32C157C5B001F8E3F /* TamagotchiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CF22C157C5B001F8E3F /* TamagotchiViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +33,7 @@
 		7BD80CC92C134A02001F8E3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BD80CCC2C134A02001F8E3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7BD80CCE2C134A02001F8E3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7BD80CD42C134E55001F8E3F /* TamagotchiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiViewController.swift; sourceTree = "<group>"; };
+		7BD80CD42C134E55001F8E3F /* TamagotchiSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiSelectViewController.swift; sourceTree = "<group>"; };
 		7BD80CD62C134EBF001F8E3F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7BD80CD92C135217001F8E3F /* ConfigureViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureViewProtocol.swift; sourceTree = "<group>"; };
 		7BD80CDB2C1352A5001F8E3F /* TamagotchiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -41,6 +42,7 @@
 		7BD80CEB2C14988E001F8E3F /* TamagotchiDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiDelegate.swift; sourceTree = "<group>"; };
 		7BD80CED2C14A636001F8E3F /* TamagotchiPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiPopupViewController.swift; sourceTree = "<group>"; };
 		7BD80CF02C14A7D1001F8E3F /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		7BD80CF22C157C5B001F8E3F /* TamagotchiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,9 +120,10 @@
 		7BD80CE72C148983001F8E3F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7BD80CD42C134E55001F8E3F /* TamagotchiViewController.swift */,
+				7BD80CD42C134E55001F8E3F /* TamagotchiSelectViewController.swift */,
 				7BD80CDB2C1352A5001F8E3F /* TamagotchiCollectionViewCell.swift */,
 				7BD80CED2C14A636001F8E3F /* TamagotchiPopupViewController.swift */,
+				7BD80CF22C157C5B001F8E3F /* TamagotchiViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -221,8 +224,9 @@
 				7BD80CC52C134A01001F8E3F /* ViewController.swift in Sources */,
 				7BD80CDA2C135217001F8E3F /* ConfigureViewProtocol.swift in Sources */,
 				7BD80CE92C1489B4001F8E3F /* UserDefaultsHelper.swift in Sources */,
-				7BD80CD52C134E55001F8E3F /* TamagotchiViewController.swift in Sources */,
+				7BD80CD52C134E55001F8E3F /* TamagotchiSelectViewController.swift in Sources */,
 				7BD80CF12C14A7D1001F8E3F /* UIColor+.swift in Sources */,
+				7BD80CF32C157C5B001F8E3F /* TamagotchiViewController.swift in Sources */,
 				7BD80CEC2C14988E001F8E3F /* TamagotchiDelegate.swift in Sources */,
 				7BD80CDC2C1352A5001F8E3F /* TamagotchiCollectionViewCell.swift in Sources */,
 				7BD80CC12C134A01001F8E3F /* AppDelegate.swift in Sources */,
