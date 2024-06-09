@@ -10,20 +10,23 @@ import Foundation
 final class UserDefaultsHelper {
     static let shared = UserDefaultsHelper()
     
-    private let isFirstMeetWithTamagotchiAppKey = "isFirstMeetWithTamagotchiAppKey"
+    private let isNotFirstMeetWithTamagotchiAppKey = "isNotFirstMeetWithTamagotchiAppKey"
     private let tamagotchiKey = "tamagotchiKey"
+    private let selectTamagotchiKey = "selectTamagotchiKey"
+    private let nicknameKey = "nicknameKey"
+    private let tamagotchiTypeKey = "tamagotchiTypeKey"
     
     private init() { }
     
-    public func getIsFirstMeetWithTamagotchi() -> Bool {
-        return UserDefaults.standard.bool(forKey: isFirstMeetWithTamagotchiAppKey)
+    public func getIsNotFirstMeetWithTamagotchi() -> Bool {
+        return UserDefaults.standard.bool(forKey: isNotFirstMeetWithTamagotchiAppKey)
     }
     
-    public func setIsFirstMeetWithTamagochi(_ isFirst: Bool) {
-        UserDefaults.standard.set(isFirst, forKey: isFirstMeetWithTamagotchiAppKey)
+    public func setIsNotFirstMeetWithTamagochi(_ isFirst: Bool) {
+        UserDefaults.standard.set(isFirst, forKey: isNotFirstMeetWithTamagotchiAppKey)
     }
     
-    public func getTamagochi() -> [Tamagotchi] {
+    public func getTamagotchies() -> [Tamagotchi] {
         if let data = UserDefaults.standard.object(forKey: tamagotchiKey) as? Data {
             
             let decoder = JSONDecoder()
@@ -38,11 +41,11 @@ final class UserDefaultsHelper {
                 let tamagotchiType = TamagotchiType.allCases[i]
                 return Tamagotchi(isAvailable: true, id: tamagotchiType.id, name: tamagotchiType.name, introduce: tamagotchiType.introduce)
             }
-            return Tamagotchi(isAvailable: false, id: "", name: "", introduce: "")
+            return Tamagotchi(isAvailable: false, id: -1, name: "", introduce: "")
         }
     }
     
-    public func setTamagochi(_ tamagotchies: [Tamagotchi]) {
+    private func setTamagotchies(_ tamagotchies: [Tamagotchi]) {
         
         let encoder = JSONEncoder()
         
@@ -51,5 +54,28 @@ final class UserDefaultsHelper {
         } else {
             
         }
+    }
+    
+    public func getSelectTamagotchi() -> Tamagotchi {
+        let id = UserDefaults.standard.integer(forKey: selectTamagotchiKey)
+        let tamagotchies = getTamagotchies()
+        return tamagotchies[id]
+    }
+    
+    public func setSelectTamagochi(_ tamagotchi: Tamagotchi) {
+        var tamagotchies = getTamagotchies()
+        tamagotchies[tamagotchi.id] = tamagotchi
+        setTamagotchies(tamagotchies)
+        
+        UserDefaults.standard.set(tamagotchi.id, forKey: selectTamagotchiKey)
+    }
+    
+    public func getNickname() -> String {
+        guard let nickname = UserDefaults.standard.string(forKey: nicknameKey) else { return "티미" }
+        return nickname
+    }
+    
+    public func setNickname(_ nickname: String) {
+        UserDefaults.standard.set(nickname, forKey: nicknameKey)
     }
 }
