@@ -27,6 +27,7 @@
 		7BD80CFC2C15CE65001F8E3F /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CFB2C15CE65001F8E3F /* UITableViewCell+.swift */; };
 		7BD80CFE2C15CEA5001F8E3F /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CFD2C15CEA5001F8E3F /* SettingTableViewCell.swift */; };
 		7BD80D002C15DF90001F8E3F /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CFF2C15DF90001F8E3F /* NicknameSettingViewController.swift */; };
+		7BD80D022C16007B001F8E3F /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80D012C16007B001F8E3F /* UINavigationController+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		7BD80CFB2C15CE65001F8E3F /* UITableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
 		7BD80CFD2C15CEA5001F8E3F /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		7BD80CFF2C15DF90001F8E3F /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
+		7BD80D012C16007B001F8E3F /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				7BD80CF02C14A7D1001F8E3F /* UIColor+.swift */,
 				7BD80CF92C15CE5C001F8E3F /* UICollectionViewCell+.swift */,
 				7BD80CFB2C15CE65001F8E3F /* UITableViewCell+.swift */,
+				7BD80D012C16007B001F8E3F /* UINavigationController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BD80D022C16007B001F8E3F /* UINavigationController+.swift in Sources */,
 				7BD80CC52C134A01001F8E3F /* ViewController.swift in Sources */,
 				7BD80CDA2C135217001F8E3F /* ConfigureViewProtocol.swift in Sources */,
 				7BD80CE92C1489B4001F8E3F /* UserDefaultsHelper.swift in Sources */,
