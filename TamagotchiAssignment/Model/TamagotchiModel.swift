@@ -85,4 +85,12 @@ struct Tamagotchi: Codable {
     init(isAvailable: Bool, id: Int, name: String, introduce: String) {
         self.init(isAvailable: isAvailable, id: id, name: name, introduce: introduce, rice: 0, water: 0)
     }
+    
+    func addRice(_ count: Int) -> Tamagotchi {
+        return Tamagotchi(isAvailable: isAvailable, id: id, name: name, introduce: introduce, rice: rice + count, water: water)
+    }
+    
+    func addWater(_ count: Int) -> Tamagotchi {
+        return Tamagotchi(isAvailable: isAvailable, id: id, name: name, introduce: introduce, rice: rice, water: water + count)
+    }
 }
