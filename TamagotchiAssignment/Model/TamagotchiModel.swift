@@ -7,8 +7,15 @@
 
 import Foundation
 
+struct Setting {
+    let mainImage: String
+    let mainTitle: String
+    let subTitle: String?
+}
+
 struct NotificationCenterName {
     static let selectButton = "selectButton"
+    static let resetButton = "resetButton"
 }
 
 enum TamagotchiSelectType {
