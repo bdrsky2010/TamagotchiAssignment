@@ -21,6 +21,7 @@ class TamagotchiPopupViewController: UIViewController, ConfigureViewProtocol {
         let view = UIView()
         view.backgroundColor = UIColor.tamagotchiBackgroundColor
         view.layer.cornerRadius = 10
+        view.clipsToBounds = true
         return view
     }()
     
@@ -44,12 +45,11 @@ class TamagotchiPopupViewController: UIViewController, ConfigureViewProtocol {
         label.text = "준비중이에요"
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = UIColor.tamagotchiBorderColor
-        label.backgroundColor = .clear
         
         return label
     }()
     
-    let dividerView: UIView = {
+    let divider: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.tamagotchiBorderColor
         return view
@@ -66,15 +66,58 @@ class TamagotchiPopupViewController: UIViewController, ConfigureViewProtocol {
     
     let cancelButton: UIButton = {
         let button = UIButton()
+        button.configuration = .plain()
+        button.backgroundColor = UIColor.tamagotchiButtonBackgroundColor
+        button.configurationUpdateHandler = { btn in
+            switch btn.state {
+            case .highlighted:
+                btn.configuration?.attributedTitle = AttributedString(
+                    NSAttributedString(string: "취소", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchilightBackgroundColor]))
+            default:
+                btn.configuration?.attributedTitle = AttributedString(
+                    NSAttributedString(string: "취소", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchiBorderColor]))
+            }
+        }
         return button
     }()
     
     let startButton: UIButton = {
         let button = UIButton()
+        button.configuration = .plain()
+        button.configurationUpdateHandler = { btn in
+            switch btn.state {
+            case .highlighted:
+                btn.configuration?.attributedTitle = AttributedString(
+                    NSAttributedString(string: "시작하기", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchilightBackgroundColor]))
+            default:
+                btn.configuration?.attributedTitle = AttributedString(
+                    NSAttributedString(string: "시작하기", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchiBorderColor]))
+            }
+        }
         return button
     }()
     
+    let buttonDivider: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.tamagotchilightBackgroundColor
+        return view
+    }()
+    
+    private var rightButtonTitle: String {
+        guard let tamagotchiSelectType else { return "" }
+        
+        switch tamagotchiSelectType {
+        case .select:
+            return "선택하기"
+        case .change:
+            return "변경하기"
+        }
+    }
+    
+    private let userDefaultsHelper = UserDefaultsHelper.shared
+    
     public var tamagotchi: Tamagotchi?
+    public var tamagotchiSelectType: TamagotchiSelectType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,8 +134,11 @@ class TamagotchiPopupViewController: UIViewController, ConfigureViewProtocol {
         
         nameBackgroundView.addSubview(nameLabel)
         contentView.addSubview(nameBackgroundView)
-        contentView.addSubview(dividerView)
+        contentView.addSubview(divider)
         contentView.addSubview(introduceLabel)
+        contentView.addSubview(cancelButton)
+        contentView.addSubview(startButton)
+        contentView.addSubview(buttonDivider)
     }
     
     func configureLayout() {
@@ -121,9 +167,10 @@ class TamagotchiPopupViewController: UIViewController, ConfigureViewProtocol {
         
         nameLabel.snp.makeConstraints { make in
             make.horizontalEdges.verticalEdges.equalToSuperview().inset(6)
+            make.height.equalTo(20)
         }
         
-        dividerView.snp.makeConstraints { make in
+        divider.snp.makeConstraints { make in
             make.top.equalTo(nameBackgroundView.snp.bottom).offset(24)
             make.centerX.equalTo(contentView.snp.centerX)
             make.width.equalTo(contentView.snp.height).multipliedBy(0.5)
@@ -131,9 +178,31 @@ class TamagotchiPopupViewController: UIViewController, ConfigureViewProtocol {
         }
         
         introduceLabel.snp.makeConstraints { make in
-            make.top.equalTo(dividerView.snp.bottom).offset(24)
+            make.top.equalTo(divider.snp.bottom).offset(24)
             make.centerX.equalTo(contentView.snp.centerX)
             make.width.equalTo(contentView.snp.height).multipliedBy(0.5)
+        }
+        
+        cancelButton.snp.makeConstraints { make in
+            make.top.equalTo(introduceLabel.snp.bottom).offset(24)
+            make.leading.equalTo(contentView.snp.leading)
+            make.bottom.equalTo(contentView.snp.bottom)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.5)
+            make.height.equalTo(40)
+        }
+        
+        startButton.snp.makeConstraints { make in
+            make.top.equalTo(cancelButton.snp.top)
+            make.trailing.equalTo(contentView.snp.trailing)
+            make.bottom.equalTo(contentView.snp.bottom)
+            make.width.equalTo(cancelButton.snp.width)
+            make.height.equalTo(cancelButton.snp.height)
+        }
+        
+        buttonDivider.snp.makeConstraints { make in
+            make.top.equalTo(introduceLabel.snp.bottom).offset(23)
+            make.bottom.equalTo(cancelButton.snp.top)
+            make.width.equalTo(contentView.snp.width)
         }
     }
     
@@ -145,13 +214,45 @@ class TamagotchiPopupViewController: UIViewController, ConfigureViewProtocol {
         
         guard let tamagotchi, tamagotchi.isAvailable else { return }
         
-        tamagotchiImageView.image = UIImage(named: tamagotchi.id + "-6")
+        tamagotchiImageView.image = UIImage(named: String(tamagotchi.id) + "-6")
         nameLabel.text = tamagotchi.name
         introduceLabel.text = tamagotchi.introduce
+        
+        cancelButton.addTarget(self, action: #selector(cancelButtonClicked), for: .touchUpInside)
+        
+        startButton.configurationUpdateHandler = { [weak self] btn in
+            guard let self else { return }
+            
+            switch btn.state {
+            case .highlighted:
+                btn.configuration?.attributedTitle = AttributedString(
+                    NSAttributedString(string: rightButtonTitle, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchilightBackgroundColor]))
+            default:
+                btn.configuration?.attributedTitle = AttributedString(
+                    NSAttributedString(string: rightButtonTitle, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchiBorderColor]))
+            }
+        }
+        
+        startButton.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
     }
     
     @objc
     private func backgroundViewTapped() {
         dismiss(animated: true)
+    }
+    
+    @objc
+    private func cancelButtonClicked() {
+        dismiss(animated: true)
+    }
+    
+    @objc
+    private func startButtonClicked() {
+        dismiss(animated: true)
+        
+        guard let tamagotchi else { return }
+        userDefaultsHelper.setSelectTamagochi(tamagotchi)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationCenterName.selectButton), object: nil)
     }
 }
