@@ -82,11 +82,19 @@ final class UserDefaultsHelper {
     }
     
     public func getNickname() -> String {
-        guard let nickname = UserDefaults.standard.string(forKey: nicknameKey) else { return "티미" }
+        guard let nickname = UserDefaults.standard.string(forKey: nicknameKey) else { return "대장" }
         return nickname
     }
     
     public func setNickname(_ nickname: String) {
         UserDefaults.standard.set(nickname, forKey: nicknameKey)
+    }
+    
+    public func resetTamagochi() {
+        UserDefaults.standard.removeObject(forKey: isNotFirstMeetWithTamagotchiAppKey)
+        UserDefaults.standard.removeObject(forKey: tamagotchiKey)
+        UserDefaults.standard.removeObject(forKey: selectTamagotchiKey)
+        UserDefaults.standard.removeObject(forKey: nicknameKey)
+        UserDefaults.standard.removeObject(forKey: tamagotchiTypeKey)
     }
 }
