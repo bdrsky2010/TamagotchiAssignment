@@ -10,16 +10,14 @@ import SnapKit
 
 final class TamagotchiCollectionViewCell: UICollectionViewCell, ConfigureViewProtocol {
     
-    public var tamagotchi: Tamagotchi?
-    
-    let tamagotchiImageView: UIImageView = {
+    private let tamagotchiImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "noImage")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    let nameBackgroundView: UIView = {
+    private let nameBackgroundView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.tamagotchiBorderColor.cgColor
@@ -27,7 +25,7 @@ final class TamagotchiCollectionViewCell: UICollectionViewCell, ConfigureViewPro
         return view
     }()
     
-    let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "준비중이에요"
         label.font = .systemFont(ofSize: 11, weight: .bold)
@@ -71,8 +69,8 @@ final class TamagotchiCollectionViewCell: UICollectionViewCell, ConfigureViewPro
         }
     }
     
-    func configureContent() {
-        guard let tamagotchi, tamagotchi.isAvailable else { return }
+    func configureContent(_ tamagotchi: Tamagotchi) {
+        guard tamagotchi.isAvailable else { return }
         
         tamagotchiImageView.image = UIImage(named: String(tamagotchi.id) + "-6")
         nameLabel.text = tamagotchi.name

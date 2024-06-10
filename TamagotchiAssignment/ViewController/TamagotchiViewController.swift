@@ -10,27 +10,27 @@ import SnapKit
 
 final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
 
-    let scrollView: UIScrollView = {
+    private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
         scrollView.keyboardDismissMode = .interactive
         return scrollView
     }()
     
-    let contentView: UIView = {
+    private let contentView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
         return view
     }()
     
-    let randomBubbleImageView: UIImageView = {
+    private let randomBubbleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "bubble")
         imageView.contentMode = .scaleToFill
         return imageView
     }()
     
-    let randomBubbleLabel: UILabel = {
+    private let randomBubbleLabel: UILabel = {
         let label = UILabel()
         label.text = "토할거가타요ㅠㅁㅠ"
         label.font = .systemFont(ofSize: 13, weight: .bold)
@@ -40,14 +40,14 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         return label
     }()
     
-    let tamagotchiImageView: UIImageView = {
+    private let tamagotchiImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "noImage")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    let nameBackgroundView: UIView = {
+    private let nameBackgroundView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.tamagotchiBorderColor.cgColor
@@ -55,7 +55,7 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         return view
     }()
     
-    let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "준비중이에요"
         label.font = .systemFont(ofSize: 14, weight: .bold)
@@ -63,7 +63,7 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         return label
     }()
     
-    let descriptionLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "LV1 ∙ 밥알 0개 ∙ 물방울 0개"
         label.font = .systemFont(ofSize: 14, weight: .bold)
@@ -72,7 +72,7 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         return label
     }()
     
-    let eatTextField: UITextField = {
+    private let eatTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .none
         textField.attributedPlaceholder = NSAttributedString(
@@ -84,13 +84,13 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         return textField
     }()
     
-    let eatUnderBar: UIView = {
+    private let eatUnderBar: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.tamagotchiBorderColor
         return view
     }()
     
-    let eatButton: UIButton = {
+    private let eatButton: UIButton = {
         let button = UIButton()
         button.configuration = .plain()
         button.configuration?.baseBackgroundColor = UIColor.clear
@@ -98,27 +98,13 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         button.layer.borderWidth = 1.5
         button.layer.cornerRadius = 5
         button.configuration?.image = UIImage(systemName: "leaf.circle")
-        
         button.configuration?.preferredSymbolConfigurationForImage = .init(pointSize: 14)
         button.configuration?.imagePadding = 4
         button.configuration?.contentInsets = .init(top: 0, leading: -16, bottom: 0, trailing: -16)
-        
-        button.configurationUpdateHandler = { btn in
-            switch btn.state {
-            case .highlighted:
-                btn.tintColor = UIColor.tamagotchilightBackgroundColor
-                btn.configuration?.attributedTitle = AttributedString(
-                    NSAttributedString(string: "밥먹기", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchilightBackgroundColor]))
-            default:
-                btn.tintColor = UIColor.tamagotchiBorderColor
-                btn.configuration?.attributedTitle = AttributedString(
-                    NSAttributedString(string: "밥먹기", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchiBorderColor]))
-            }
-        }
         return button
     }()
     
-    let drinkTextField: UITextField = {
+    private let drinkTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .none
         textField.attributedPlaceholder = NSAttributedString(
@@ -126,18 +112,17 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         textField.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         textField.textColor = UIColor.tamagotchiBorderColor
         textField.textAlignment = .center
-        textField.textColor = UIColor.tamagotchiBorderColor
         textField.keyboardType = .numberPad
         return textField
     }()
     
-    let drinkUnderBar: UIView = {
+    private let drinkUnderBar: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.tamagotchiBorderColor
         return view
     }()
     
-    let drinkButton: UIButton = {
+    private let drinkButton: UIButton = {
         let button = UIButton()
         button.configuration = .plain()
         button.configuration?.baseBackgroundColor = UIColor.clear
@@ -149,19 +134,7 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         button.configuration?.preferredSymbolConfigurationForImage = .init(pointSize: 14)
         button.configuration?.imagePadding = 4
         button.configuration?.contentInsets = .init(top: 0, leading: -16, bottom: 0, trailing: -16)
-        
-        button.configurationUpdateHandler = { btn in
-            switch btn.state {
-            case .highlighted:
-                btn.tintColor = UIColor.tamagotchilightBackgroundColor
-                btn.configuration?.attributedTitle = AttributedString(
-                    NSAttributedString(string: "물먹기", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchilightBackgroundColor]))
-            default:
-                btn.tintColor = UIColor.tamagotchiBorderColor
-                btn.configuration?.attributedTitle = AttributedString(
-                    NSAttributedString(string: "물먹기", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchiBorderColor]))
-            }
-        }
+        button.configureButtonTitleColorChangeOnByState(title: "물먹기")
         return button
     }()
     
@@ -235,8 +208,6 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         }
         
         scrollView.contentInset.bottom = keyboardFrame.size.height
-        
-        
     }
     
     @objc private func keyboardWillHide() {

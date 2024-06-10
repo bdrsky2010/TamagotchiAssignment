@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B1BF5532C17C0DF00FC02AC /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1BF5522C17C0DF00FC02AC /* UIButton+.swift */; };
 		7BD80CC12C134A01001F8E3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CC02C134A01001F8E3F /* AppDelegate.swift */; };
 		7BD80CC32C134A01001F8E3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CC22C134A01001F8E3F /* SceneDelegate.swift */; };
 		7BD80CC52C134A01001F8E3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CC42C134A01001F8E3F /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B1BF5522C17C0DF00FC02AC /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		7BD80CBD2C134A01001F8E3F /* TamagotchiAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TamagotchiAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BD80CC02C134A01001F8E3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BD80CC22C134A01001F8E3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				7BD80CF92C15CE5C001F8E3F /* UICollectionViewCell+.swift */,
 				7BD80CFB2C15CE65001F8E3F /* UITableViewCell+.swift */,
 				7BD80D012C16007B001F8E3F /* UINavigationController+.swift */,
+				7B1BF5522C17C0DF00FC02AC /* UIButton+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				7BD80CFA2C15CE5C001F8E3F /* UICollectionViewCell+.swift in Sources */,
 				7BD80CDC2C1352A5001F8E3F /* TamagotchiCollectionViewCell.swift in Sources */,
 				7BD80CC12C134A01001F8E3F /* AppDelegate.swift in Sources */,
+				7B1BF5532C17C0DF00FC02AC /* UIButton+.swift in Sources */,
 				7BD80CE42C14821B001F8E3F /* TamagotchiModel.swift in Sources */,
 				7BD80D002C15DF90001F8E3F /* NicknameSettingViewController.swift in Sources */,
 				7BD80CEE2C14A636001F8E3F /* TamagotchiPopupViewController.swift in Sources */,

@@ -10,13 +10,13 @@ import SnapKit
 
 class SettingTableViewCell: UITableViewCell, ConfigureViewProtocol {
     
-    let cellView: UIView = {
+    private let cellView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
         return view
     }()
     
-    let mainImageView: UIImageView = {
+    private let mainImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "pencil")
         imageView.tintColor = UIColor.tamagotchiBorderColor
@@ -24,14 +24,14 @@ class SettingTableViewCell: UITableViewCell, ConfigureViewProtocol {
         return imageView
     }()
     
-    let mainTitleLabel: UILabel = {
+    private let mainTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "설정하기"
         label.font = .systemFont(ofSize: 14, weight: .bold)
         return label
     }()
     
-    let subTitleLabel: UILabel = {
+    private let subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "고래밥"
         label.font = .systemFont(ofSize: 14, weight: .regular)
@@ -39,7 +39,7 @@ class SettingTableViewCell: UITableViewCell, ConfigureViewProtocol {
         return label
     }()
     
-    let pushImageView: UIImageView = {
+    private let pushImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.forward")
         imageView.preferredSymbolConfiguration = .init(pointSize: 14)

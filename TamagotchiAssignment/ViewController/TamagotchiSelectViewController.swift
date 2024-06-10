@@ -10,13 +10,13 @@ import SnapKit
 
 final class TamagotchiSelectViewController: UIViewController, ConfigureViewProtocol {
     
-    let tamagotchiCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private let tamagotchiCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     private let userDefaultsHelper = UserDefaultsHelper.shared
     private var tamagotchies: [Tamagotchi] = []
     
-    public var tamagotchiSelectType: TamagotchiSelectType?
-    public var navigationTitle: String {
+    var tamagotchiSelectType: TamagotchiSelectType?
+    var navigationTitle: String {
         
         guard let tamagotchiSelectType else { return "" }
         
@@ -73,7 +73,6 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
     
     @objc
     private func leftBarButtonAction() {
-        
         navigationController?.popViewController(animated: true)
     }
     
@@ -123,8 +122,8 @@ extension TamagotchiSelectViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TamagotchiCollectionViewCell.identifier, for: indexPath) as? TamagotchiCollectionViewCell else { return UICollectionViewCell() }
         let index = indexPath.row
-        cell.tamagotchi = tamagotchies[index]
-        cell.configureContent()
+        let tamagotchi = tamagotchies[index]
+        cell.configureContent(tamagotchi)
         return cell
     }
 }

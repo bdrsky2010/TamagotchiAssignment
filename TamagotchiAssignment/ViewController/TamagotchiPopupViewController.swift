@@ -10,14 +10,14 @@ import SnapKit
 
 final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtocol {
 
-    let backgroundView: UIView = {
+    private let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
         view.layer.opacity = 0.5
         return view
     }()
     
-    let contentView: UIView = {
+    private let contentView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.tamagotchiBackgroundColor
         view.layer.cornerRadius = 10
@@ -25,14 +25,14 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
         return view
     }()
     
-    let tamagotchiImageView: UIImageView = {
+    private let tamagotchiImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "noImage")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    let nameBackgroundView: UIView = {
+    private let nameBackgroundView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.tamagotchiBorderColor.cgColor
@@ -40,7 +40,7 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
         return view
     }()
     
-    let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "준비중이에요"
         label.font = .systemFont(ofSize: 14, weight: .bold)
@@ -49,13 +49,13 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
         return label
     }()
     
-    let divider: UIView = {
+    private let divider: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.tamagotchiBorderColor
         return view
     }()
     
-    let introduceLabel: UILabel = {
+    private let introduceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 13, weight: .bold)
         label.textColor = UIColor.tamagotchiBorderColor
@@ -64,34 +64,27 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
         return label
     }()
     
-    let cancelButton: UIButton = {
+    private let cancelButton: UIButton = {
         let button = UIButton()
         button.configuration = .plain()
         button.backgroundColor = UIColor.tamagotchiButtonBackgroundColor
-        button.configurationUpdateHandler = { btn in
-            switch btn.state {
-            case .highlighted:
-                btn.configuration?.attributedTitle = AttributedString(
-                    NSAttributedString(string: "취소", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchilightBackgroundColor]))
-            default:
-                btn.configuration?.attributedTitle = AttributedString(
-                    NSAttributedString(string: "취소", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchiBorderColor]))
-            }
-        }
+        button.configureButtonTitleColorChangeOnByState(title: "취소")
         return button
     }()
     
-    let startButton: UIButton = {
+    private let startButton: UIButton = {
         let button = UIButton()
         button.configuration = .plain()
         return button
     }()
     
-    let buttonDivider: UIView = {
+    private let buttonDivider: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.tamagotchilightBackgroundColor
         return view
     }()
+    
+    private let userDefaultsHelper = UserDefaultsHelper.shared
     
     private var rightButtonTitle: String {
         guard let tamagotchiSelectType else { return "" }
@@ -104,10 +97,8 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
         }
     }
     
-    private let userDefaultsHelper = UserDefaultsHelper.shared
-    
-    public var tamagotchi: Tamagotchi?
-    public var tamagotchiSelectType: TamagotchiSelectType?
+    var tamagotchi: Tamagotchi?
+    var tamagotchiSelectType: TamagotchiSelectType?
     
     override func viewDidLoad() {
         super.viewDidLoad()

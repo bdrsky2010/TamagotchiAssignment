@@ -9,7 +9,7 @@ import UIKit
 
 final class SettingViewController: UIViewController, ConfigureViewProtocol {
 
-    let settingTableView = UITableView()
+    private let settingTableView = UITableView()
     
     private let userDefaultsHelper = UserDefaultsHelper.shared
     

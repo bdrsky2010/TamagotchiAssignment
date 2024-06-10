@@ -42,7 +42,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                object: nil)
         
         let navigationController = UINavigationController(rootViewController: rootViewController)
-//        navigationController.navigationBar.standardAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
         
         window?.rootViewController = navigationController
         

@@ -10,7 +10,7 @@ import SnapKit
 
 final class NicknameSettingViewController: UIViewController, ConfigureViewProtocol {
 
-    let nameSettingTextField: UITextField = {
+    private let nameSettingTextField: UITextField = {
         let textField = UITextField()
         textField.attributedPlaceholder = NSAttributedString(
             string: "2~6자 사이로 입력해주세요", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold)])
@@ -20,13 +20,13 @@ final class NicknameSettingViewController: UIViewController, ConfigureViewProtoc
         return textField
     }()
     
-    let textFieldUnderBar: UIView = {
+    private let textFieldUnderBar: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.tamagotchiBorderColor
         return view
     }()
     
-    let removeTextButton: UIButton = {
+    private let removeTextButton: UIButton = {
         let button = UIButton()
         button.configuration = .plain()
         button.configuration?.image = UIImage(systemName: "xmark.circle.fill")

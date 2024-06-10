@@ -18,15 +18,15 @@ final class UserDefaultsHelper {
     
     private init() { }
     
-    public func getIsNotFirstMeetWithTamagotchi() -> Bool {
+    func getIsNotFirstMeetWithTamagotchi() -> Bool {
         return UserDefaults.standard.bool(forKey: isNotFirstMeetWithTamagotchiAppKey)
     }
     
-    public func setIsNotFirstMeetWithTamagochi(_ isFirst: Bool) {
+    func setIsNotFirstMeetWithTamagochi(_ isFirst: Bool) {
         UserDefaults.standard.set(isFirst, forKey: isNotFirstMeetWithTamagotchiAppKey)
     }
     
-    public func getTamagotchies() -> [Tamagotchi] {
+    func getTamagotchies() -> [Tamagotchi] {
         if let data = UserDefaults.standard.object(forKey: tamagotchiKey) as? Data {
             
             let decoder = JSONDecoder()
@@ -56,7 +56,7 @@ final class UserDefaultsHelper {
         }
     }
     
-    public func getSelectTamagotchi() -> Tamagotchi? {
+    func getSelectTamagotchi() -> Tamagotchi? {
         let id = UserDefaults.standard.integer(forKey: selectTamagotchiKey)
         let tamagotchies = getTamagotchies()
         
@@ -68,7 +68,7 @@ final class UserDefaultsHelper {
         return nil
     }
     
-    public func setSelectTamagochi(_ tamagotchi: Tamagotchi) {
+    func setSelectTamagochi(_ tamagotchi: Tamagotchi) {
         var tamagotchies = getTamagotchies()
         for i in 0..<tamagotchies.count {
             if tamagotchies[i].id == tamagotchi.id {
@@ -81,16 +81,16 @@ final class UserDefaultsHelper {
         UserDefaults.standard.set(tamagotchi.id, forKey: selectTamagotchiKey)
     }
     
-    public func getNickname() -> String {
+    func getNickname() -> String {
         guard let nickname = UserDefaults.standard.string(forKey: nicknameKey) else { return "대장" }
         return nickname
     }
     
-    public func setNickname(_ nickname: String) {
+    func setNickname(_ nickname: String) {
         UserDefaults.standard.set(nickname, forKey: nicknameKey)
     }
     
-    public func resetTamagochi() {
+    func resetTamagochi() {
         UserDefaults.standard.removeObject(forKey: isNotFirstMeetWithTamagotchiAppKey)
         UserDefaults.standard.removeObject(forKey: tamagotchiKey)
         UserDefaults.standard.removeObject(forKey: selectTamagotchiKey)
