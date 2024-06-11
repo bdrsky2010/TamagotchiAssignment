@@ -101,6 +101,7 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         button.configuration?.preferredSymbolConfigurationForImage = .init(pointSize: 14)
         button.configuration?.imagePadding = 4
         button.configuration?.contentInsets = .init(top: 0, leading: -16, bottom: 0, trailing: -16)
+        button.configureButtonTitleColorChangeOnByState(title: "밥먹기")
         return button
     }()
     
@@ -130,7 +131,6 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         button.layer.borderWidth = 1.5
         button.layer.cornerRadius = 5
         button.configuration?.image = UIImage(systemName: "leaf.circle")
-        
         button.configuration?.preferredSymbolConfigurationForImage = .init(pointSize: 14)
         button.configuration?.imagePadding = 4
         button.configuration?.contentInsets = .init(top: 0, leading: -16, bottom: 0, trailing: -16)
