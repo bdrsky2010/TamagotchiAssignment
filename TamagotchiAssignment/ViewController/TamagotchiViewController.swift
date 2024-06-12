@@ -117,8 +117,6 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         return button
     }()
     
-    private let userDefaultsHelper = UserDefaultsHelper.shared
-    
     private var tamagotchi: Tamagotchi? {
         get {
             guard let tamagotchies = UserDefaultsManager.tamagotchies else {
@@ -139,7 +137,6 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
             }
             
             return nil
-//            return userDefaultsHelper.getSelectTamagotchi()
         }
         set {
             guard let newValue, var tamagotchies = UserDefaultsManager.tamagotchies else { return }
@@ -149,7 +146,6 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
                 }
             }
             UserDefaultsManager.tamagotchies = tamagotchies
-//            userDefaultsHelper.setSelectTamagochi(newValue)
             configureContent()
         }
     }
@@ -178,7 +174,6 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     }
     
     private func configureNickname() {
-//        let nickname = userDefaultsHelper.getNickname()
         let nickname = UserDefaultsManager.nickname ?? "대장"
         navigationItem.title = nickname + "님의 다마고치"
         randomBubble = [

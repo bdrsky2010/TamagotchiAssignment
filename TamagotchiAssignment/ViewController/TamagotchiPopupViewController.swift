@@ -62,8 +62,6 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
         return view
     }()
     
-    private let userDefaultsHelper = UserDefaultsHelper.shared
-    
     private var rightButtonTitle: String {
         guard let tamagotchiSelectType else { return "" }
         return tamagotchiSelectType.popupButtonTitle
@@ -197,8 +195,6 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
         print(tamagotchi)
         UserDefaultsManager.selectedTamagotchiID = tamagotchi.id
         UserDefaultsManager.isFirstOpenedApp = true
-//        userDefaultsHelper.setSelectTamagochi(tamagotchi)
-//        userDefaultsHelper.setIsNotFirstMeetWithTamagochi(true)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: TamagotchiUsed.NotificationCenterName.selectButton), object: nil)
     }

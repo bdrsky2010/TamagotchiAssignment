@@ -11,19 +11,11 @@ final class SettingViewController: UIViewController, ConfigureViewProtocol {
 
     private let settingTableView = UITableView()
     
-    private let userDefaultsHelper = UserDefaultsHelper.shared
-    
     private var settingList: [Setting] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
-        
-//        settingList = [
-//            Setting(mainImage: "pencil", mainTitle: "내 이름 설정하기", subTitle: userDefaultsHelper.getNickname()),
-//            Setting(mainImage: "moon.fill", mainTitle: "다마고치 변경하기", subTitle: nil),
-//            Setting(mainImage: "arrow.clockwise", mainTitle: "데이터 초기화", subTitle: nil)
-//        ]
         
         settingList = [
             Setting(mainImage: "pencil", mainTitle: "내 이름 설정하기", subTitle: UserDefaultsManager.nickname ?? "대장"),
@@ -104,7 +96,6 @@ extension SettingViewController: UITableViewDelegate {
             // 2. alert button 구성
             let reset = UIAlertAction(title: "웅", style: .default) { action in
                 
-//                userDefaultsHelper.resetTamagochi()
                 UserDefaultsManager.removeAllUserDefaultsData()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: TamagotchiUsed.NotificationCenterName.resetButton), object: nil)
             }

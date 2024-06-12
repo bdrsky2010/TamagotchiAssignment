@@ -29,8 +29,6 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
         return UICollectionView(frame: .zero, collectionViewLayout: collectioViewLayout)
     }()
     
-    private let userDefaultsHelper = UserDefaultsHelper.shared
-    
     private var tamagotchies: [Tamagotchi] = []
     
     private lazy var navigationTitle = tamagotchiSelectType?.naviagtionTitle
@@ -40,8 +38,6 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
-        
-//        tamagotchies = userDefaultsHelper.getTamagotchies()
         
         if let tamagotchies = UserDefaultsManager.tamagotchies {
             self.tamagotchies = tamagotchies
