@@ -20,7 +20,7 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
                 let width: CGFloat = windowScene.screen.bounds.width - (sectionSpacing * 2) - (cellSpacing * 3)
                 layout.minimumLineSpacing = cellSpacing
                 layout.minimumInteritemSpacing = cellSpacing
-                layout.itemSize = CGSize(width: width / 3, height: width / 2)
+                layout.itemSize = CGSize(width: width / 3, height: width / 2.5)
                 layout.sectionInset = UIEdgeInsets(
                     top: 0, left: sectionSpacing, bottom: 0, right: sectionSpacing)
             }
@@ -30,20 +30,12 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
     }()
     
     private let userDefaultsHelper = UserDefaultsHelper.shared
+    
     private var tamagotchies: [Tamagotchi] = []
     
+    private lazy var navigationTitle = tamagotchiSelectType?.naviagtionTitle
+    
     var tamagotchiSelectType: TamagotchiUsed.TamagotchiSelectType?
-    var navigationTitle: String {
-        
-        guard let tamagotchiSelectType else { return "" }
-        
-        switch tamagotchiSelectType {
-        case .select:
-            return "다마고치 선택하기"
-        case .change:
-            return "다마고치 변경하기"
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

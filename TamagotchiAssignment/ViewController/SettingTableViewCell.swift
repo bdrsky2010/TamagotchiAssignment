@@ -27,14 +27,14 @@ class SettingTableViewCell: UITableViewCell, ConfigureViewProtocol {
     private let mainTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "설정하기"
-        label.font = .systemFont(ofSize: 14, weight: .bold)
+        label.font = TamagotchiUsed.Font.bold14
         return label
     }()
     
     private let subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "고래밥"
-        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.font = TamagotchiUsed.Font.regular14
         label.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         return label
     }()

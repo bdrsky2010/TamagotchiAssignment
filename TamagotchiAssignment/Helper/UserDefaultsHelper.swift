@@ -40,7 +40,7 @@ final class UserDefaultsHelper {
                 let tamagotchiType = TamagotchiUsed.TamagotchiType.allCases[i]
                 return Tamagotchi(isAvailable: true, id: tamagotchiType.id, name: tamagotchiType.name, introduce: tamagotchiType.introduce)
             }
-            return Tamagotchi(isAvailable: false, id: -1, name: "", introduce: "")
+            return Tamagotchi(isAvailable: false, id: -1, name: "준비중이에요", introduce: "")
         }
     }
     

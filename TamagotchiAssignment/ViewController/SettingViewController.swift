@@ -34,7 +34,7 @@ final class SettingViewController: UIViewController, ConfigureViewProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        settingList[0] = Setting(mainImage: "pencil", mainTitle: "내 이름 설정하기", subTitle: userDefaultsHelper.getNickname())
+        settingList[0].subTitle = userDefaultsHelper.getNickname()
         
         settingTableView.reloadData()
     }

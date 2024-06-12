@@ -13,8 +13,8 @@ final class NicknameSettingViewController: UIViewController, ConfigureViewProtoc
     private let nameSettingTextField: UITextField = {
         let textField = UITextField()
         textField.attributedPlaceholder = NSAttributedString(
-            string: "2~6자 사이로 입력해주세요", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold)])
-        textField.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+            string: "2~6자 사이로 입력해주세요", attributes: [NSAttributedString.Key.font: TamagotchiUsed.Font.bold14])
+        textField.font = TamagotchiUsed.Font.bold14
         textField.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         textField.borderStyle = .none
         return textField

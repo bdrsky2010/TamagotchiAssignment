@@ -14,11 +14,11 @@ extension UIButton {
             case .highlighted:
                 btn.configuration?.baseForegroundColor = TamagotchiUsed.Color.tamagotchilightBackgroundColor
                 btn.configuration?.attributedTitle = AttributedString(
-                    NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: TamagotchiUsed.Color.tamagotchilightBackgroundColor]))
+                    NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: TamagotchiUsed.Font.bold13, NSAttributedString.Key.foregroundColor: TamagotchiUsed.Color.tamagotchilightBackgroundColor]))
             default:
                 btn.configuration?.baseForegroundColor = TamagotchiUsed.Color.tamagotchiBorderColor
                 btn.configuration?.attributedTitle = AttributedString(
-                    NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: TamagotchiUsed.Color.tamagotchiBorderColor]))
+                    NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: TamagotchiUsed.Font.bold13, NSAttributedString.Key.foregroundColor: TamagotchiUsed.Color.tamagotchiBorderColor]))
             }
         }
     }

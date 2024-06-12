@@ -33,40 +33,19 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     private let randomBubbleLabel: UILabel = {
         let label = UILabel()
         label.text = "토할거가타요ㅠㅁㅠ"
-        label.font = .systemFont(ofSize: 13, weight: .bold)
+        label.font = TamagotchiUsed.Font.bold13
         label.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
     }()
     
-    private let tamagotchiImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "noImage")
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    private let nameBackgroundView: UIView = {
-        let view = UIView()
-        view.layer.borderWidth = 1
-        view.layer.borderColor = TamagotchiUsed.Color.tamagotchiBorderColor.cgColor
-        view.layer.cornerRadius = 5
-        return view
-    }()
-    
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "준비중이에요"
-        label.font = .systemFont(ofSize: 14, weight: .bold)
-        label.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
-        return label
-    }()
+    private let tamagotchiView = ReusableTamagotchiView()
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "LV1 ∙ 밥알 0개 ∙ 물방울 0개"
-        label.font = .systemFont(ofSize: 14, weight: .bold)
+        label.font = TamagotchiUsed.Font.bold14
         label.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         label.textAlignment = .center
         return label
@@ -76,8 +55,8 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         let textField = UITextField()
         textField.borderStyle = .none
         textField.attributedPlaceholder = NSAttributedString(
-            string: "밥주세용", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold)])
-        textField.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+            string: "밥주세용", attributes: [NSAttributedString.Key.font: TamagotchiUsed.Font.bold14])
+        textField.font = TamagotchiUsed.Font.bold14
         textField.textAlignment = .center
         textField.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         textField.keyboardType = .numberPad
@@ -109,8 +88,8 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         let textField = UITextField()
         textField.borderStyle = .none
         textField.attributedPlaceholder = NSAttributedString(
-            string: "물주세용", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold)])
-        textField.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+            string: "물주세용", attributes: [NSAttributedString.Key.font: TamagotchiUsed.Font.bold14])
+        textField.font = TamagotchiUsed.Font.bold14
         textField.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         textField.textAlignment = .center
         textField.keyboardType = .numberPad
@@ -227,7 +206,6 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     
     @objc
     private func rightBarButtonItemClicked() {
-        print(#function)
         
         let settingViewController = SettingViewController()
         navigationController?.pushViewController(settingViewController, animated: true)
@@ -237,13 +215,9 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        
-        contentView.addSubview(tamagotchiImageView)
+        contentView.addSubview(tamagotchiView)
         contentView.addSubview(randomBubbleImageView)
         contentView.addSubview(randomBubbleLabel)
-        
-        nameBackgroundView.addSubview(nameLabel)
-        contentView.addSubview(nameBackgroundView)
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(eatTextField)
         contentView.addSubview(eatUnderBar)
@@ -265,7 +239,7 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
             make.height.equalTo(scrollView.frameLayoutGuide)
         }
         
-        tamagotchiImageView.snp.makeConstraints { make in
+        tamagotchiView.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.5)
             make.height.equalToSuperview().multipliedBy(0.25)
             make.centerX.equalToSuperview()
@@ -273,10 +247,10 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         
         randomBubbleImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(40)
-            make.centerX.equalTo(tamagotchiImageView)
-            make.width.equalTo(tamagotchiImageView.snp.width).multipliedBy(1.2)
+            make.centerX.equalTo(tamagotchiView)
+            make.width.equalTo(tamagotchiView.snp.width).multipliedBy(1.2)
             make.height.equalToSuperview().multipliedBy(0.2)
-            make.bottom.equalTo(tamagotchiImageView.snp.top).offset(-4)
+            make.bottom.equalTo(tamagotchiView.snp.top).offset(-4)
         }
         
         randomBubbleLabel.snp.makeConstraints { make in
@@ -286,19 +260,9 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
             make.bottom.equalTo(randomBubbleImageView.snp.bottom).offset(-20)
         }
         
-        nameBackgroundView.snp.makeConstraints { make in
-            make.top.equalTo(tamagotchiImageView.snp.bottom).offset(8)
-            make.centerX.equalTo(tamagotchiImageView.snp.centerX)
-        }
-        
-        nameLabel.snp.makeConstraints { make in
-            make.horizontalEdges.verticalEdges.equalToSuperview().inset(6)
-            make.height.equalTo(20)
-        }
-        
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(16)
-            make.centerX.equalTo(nameLabel.snp.centerX)
+            make.top.equalTo(tamagotchiView.snp.bottom).offset(16)
+            make.centerX.equalTo(tamagotchiView.snp.centerX)
         }
         
         eatButton.snp.makeConstraints { make in
@@ -346,8 +310,10 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         guard let tamagotchi else { return }
         
         randomBubbleLabel.text = randomBubble.randomElement()
-        tamagotchiImageView.image = UIImage(named: "\(tamagotchi.id)-\(tamagotchi.level == 10 ? 9 : tamagotchi.level)")
-        nameLabel.text = tamagotchi.name
+
+        tamagotchiView.configureNameLabelFont(TamagotchiUsed.Font.bold14)
+        tamagotchiView.configureContent(tamagotchi, usedTo: .main)
+        
         descriptionLabel.text = "LV\(tamagotchi.level) ∙ 밥알 \(tamagotchi.rice)개 ∙ 물방울 \(tamagotchi.water)개"
     }
     
