@@ -95,7 +95,6 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
 extension TamagotchiSelectViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(#function, indexPath.row)
         
         let tamagotchi = tamagotchies[indexPath.row]
         

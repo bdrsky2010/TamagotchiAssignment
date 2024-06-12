@@ -71,7 +71,12 @@ class ReusableTamagotchiView: UIView, ConfigureViewProtocol {
     }
     
     func configureContent(_ tamagotchi: Tamagotchi, usedTo: TamagotchiUsed.ReusableCellUsedTo) {
-        tamagotchiImageView.image = UIImage(named: String(tamagotchi.id) + "-\(usedTo == .etc ? 6 : tamagotchi.level)")
+        var imageNamed = "\(tamagotchi.id)-"
+        if usedTo == .etc {
+            tamagotchiImageView.image = UIImage(named: imageNamed + "6")
+        } else {
+            tamagotchiImageView.image = UIImage(named: imageNamed + "\(tamagotchi.level >= 10 ? 9 : tamagotchi.level)")
+        }
         nameLabel.text = tamagotchi.name
     }
 }

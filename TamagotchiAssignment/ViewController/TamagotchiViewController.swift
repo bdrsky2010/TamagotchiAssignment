@@ -119,19 +119,11 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     
     private var tamagotchi: Tamagotchi? {
         get {
-            guard let tamagotchies = UserDefaultsManager.tamagotchies else {
-                print("다마고치들을 못가져옴")
-                return nil
-            }
-            
-            guard let id = UserDefaultsManager.selectedTamagotchiID else {
-                print("아이디를 못가져옴")
-                return nil
-            }
+            guard let tamagotchies = UserDefaultsManager.tamagotchies else { return nil }
+            guard let id = UserDefaultsManager.selectedTamagotchiID else { return nil }
             
             for tamagotchi in tamagotchies {
                 if id == tamagotchi.id {
-                    print("에엥에에에에에?")
                     return tamagotchi
                 }
             }
@@ -327,7 +319,6 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     }
     
     func configureContent() {
-        print(#function)
         guard let tamagotchi else { return }
         
         randomBubbleLabel.text = randomBubble.randomElement()

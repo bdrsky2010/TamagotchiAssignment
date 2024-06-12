@@ -192,7 +192,7 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
         dismiss(animated: true)
         
         guard let tamagotchi else { return }
-        print(tamagotchi)
+        
         UserDefaultsManager.selectedTamagotchiID = tamagotchi.id
         UserDefaultsManager.isFirstOpenedApp = true
         
