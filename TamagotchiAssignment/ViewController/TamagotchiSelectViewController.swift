@@ -63,21 +63,15 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
     func configureLayout() {
         tamagotchiCollectionView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)/*.inset(16)*/
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalToSuperview()
         }
     }
     
     func configureNavigation() {
         navigationItem.title = navigationTitle
-        
-        let navigationBarAppearance = UINavigationBarAppearance()
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold), NSAttributedString.Key.foregroundColor: TamagotchiUsed.Color.tamagotchiBorderColor]
-        navigationBarAppearance.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
-        
+        navigationController?.configureTamagotchiStyle()
         navigationController?.navigationBar.tintColor = TamagotchiUsed.Color.tamagotchiBorderColor
-        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
-        
         if navigationController?.topViewController != self {
             let leftBarButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"),
                                                 style: .plain,

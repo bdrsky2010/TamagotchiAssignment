@@ -16,4 +16,12 @@ extension UINavigationController: UIGestureRecognizerDelegate {
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return viewControllers.count > 1
     }
+    
+    func configureTamagotchiStyle() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold), NSAttributedString.Key.foregroundColor: TamagotchiUsed.Color.tamagotchiBorderColor]
+        navigationBarAppearance.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
+        
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+    }
 }

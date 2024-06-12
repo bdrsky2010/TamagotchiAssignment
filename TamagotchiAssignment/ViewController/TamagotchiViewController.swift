@@ -217,13 +217,8 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     }
     
     func configureNavigation() {
-        let navigationBarAppearance = UINavigationBarAppearance()
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold), NSAttributedString.Key.foregroundColor: TamagotchiUsed.Color.tamagotchiBorderColor]
-        navigationBarAppearance.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
-        
+        navigationController?.configureTamagotchiStyle()
         navigationController?.navigationBar.tintColor = TamagotchiUsed.Color.tamagotchiBorderColor
-        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
-        
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"),
                                                  style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
         
