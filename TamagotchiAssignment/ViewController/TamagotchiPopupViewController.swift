@@ -194,8 +194,11 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
         dismiss(animated: true)
         
         guard let tamagotchi else { return }
-        userDefaultsHelper.setSelectTamagochi(tamagotchi)
-        userDefaultsHelper.setIsNotFirstMeetWithTamagochi(true)
+        print(tamagotchi)
+        UserDefaultsManager.selectedTamagotchiID = tamagotchi.id
+        UserDefaultsManager.isFirstOpenedApp = true
+//        userDefaultsHelper.setSelectTamagochi(tamagotchi)
+//        userDefaultsHelper.setIsNotFirstMeetWithTamagochi(true)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: TamagotchiUsed.NotificationCenterName.selectButton), object: nil)
     }

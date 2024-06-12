@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B1BF5532C17C0DF00FC02AC /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1BF5522C17C0DF00FC02AC /* UIButton+.swift */; };
-		7B1BF56B2C19115600FC02AC /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1BF56A2C19115600FC02AC /* UserDefault.swift */; };
+		7B1BF56B2C19115600FC02AC /* TamaUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1BF56A2C19115600FC02AC /* TamaUserDefaults.swift */; };
 		7B1BF5772C197DAD00FC02AC /* TamagotchiUsed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1BF5762C197DAD00FC02AC /* TamagotchiUsed.swift */; };
 		7B1BF57B2C198DB600FC02AC /* ReusableTamagotchiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1BF57A2C198DB600FC02AC /* ReusableTamagotchiView.swift */; };
 		7BD80CC12C134A01001F8E3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CC02C134A01001F8E3F /* AppDelegate.swift */; };
@@ -35,7 +35,7 @@
 
 /* Begin PBXFileReference section */
 		7B1BF5522C17C0DF00FC02AC /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
-		7B1BF56A2C19115600FC02AC /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		7B1BF56A2C19115600FC02AC /* TamaUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamaUserDefaults.swift; sourceTree = "<group>"; };
 		7B1BF5762C197DAD00FC02AC /* TamagotchiUsed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiUsed.swift; sourceTree = "<group>"; };
 		7B1BF57A2C198DB600FC02AC /* ReusableTamagotchiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTamagotchiView.swift; sourceTree = "<group>"; };
 		7BD80CBD2C134A01001F8E3F /* TamagotchiAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TamagotchiAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,12 +73,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7B1BF5692C19113100FC02AC /* PropertyWrapper */ = {
+		7B1BF5692C19113100FC02AC /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				7B1BF56A2C19115600FC02AC /* UserDefault.swift */,
+				7B1BF56A2C19115600FC02AC /* TamaUserDefaults.swift */,
 			);
-			path = PropertyWrapper;
+			path = UserDefaults;
 			sourceTree = "<group>";
 		};
 		7B1BF5752C197D8E00FC02AC /* Used */ = {
@@ -125,7 +125,7 @@
 				7BD80CE72C148983001F8E3F /* ViewController */,
 				7B1BF5752C197D8E00FC02AC /* Used */,
 				7BD80CE62C148969001F8E3F /* Helper */,
-				7B1BF5692C19113100FC02AC /* PropertyWrapper */,
+				7B1BF5692C19113100FC02AC /* UserDefaults */,
 				7BD80CD82C1351EE001F8E3F /* Protocol */,
 				7BD80CEF2C14A7C1001F8E3F /* Extension */,
 				7BD80CC92C134A02001F8E3F /* Assets.xcassets */,
@@ -274,7 +274,7 @@
 				7B1BF57B2C198DB600FC02AC /* ReusableTamagotchiView.swift in Sources */,
 				7BD80CDC2C1352A5001F8E3F /* TamagotchiCollectionViewCell.swift in Sources */,
 				7BD80CC12C134A01001F8E3F /* AppDelegate.swift in Sources */,
-				7B1BF56B2C19115600FC02AC /* UserDefault.swift in Sources */,
+				7B1BF56B2C19115600FC02AC /* TamaUserDefaults.swift in Sources */,
 				7B1BF5532C17C0DF00FC02AC /* UIButton+.swift in Sources */,
 				7BD80CE42C14821B001F8E3F /* TamagotchiModel.swift in Sources */,
 				7BD80D002C15DF90001F8E3F /* NicknameSettingViewController.swift in Sources */,

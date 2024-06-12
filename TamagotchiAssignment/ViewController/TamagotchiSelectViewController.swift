@@ -41,7 +41,15 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
         super.viewDidLoad()
         view.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
         
-        tamagotchies = userDefaultsHelper.getTamagotchies()
+//        tamagotchies = userDefaultsHelper.getTamagotchies()
+        
+        if let tamagotchies = UserDefaultsManager.tamagotchies {
+            self.tamagotchies = tamagotchies
+        } else {
+            self.tamagotchies = UserDefaultsManager.defaultTamagotchies
+            UserDefaultsManager.tamagotchies = self.tamagotchies
+        }
+        
         configureHierarchy()
         configureLayout()
         configureNavigation()

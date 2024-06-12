@@ -19,8 +19,14 @@ final class SettingViewController: UIViewController, ConfigureViewProtocol {
         super.viewDidLoad()
         view.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
         
+//        settingList = [
+//            Setting(mainImage: "pencil", mainTitle: "내 이름 설정하기", subTitle: userDefaultsHelper.getNickname()),
+//            Setting(mainImage: "moon.fill", mainTitle: "다마고치 변경하기", subTitle: nil),
+//            Setting(mainImage: "arrow.clockwise", mainTitle: "데이터 초기화", subTitle: nil)
+//        ]
+        
         settingList = [
-            Setting(mainImage: "pencil", mainTitle: "내 이름 설정하기", subTitle: userDefaultsHelper.getNickname()),
+            Setting(mainImage: "pencil", mainTitle: "내 이름 설정하기", subTitle: UserDefaultsManager.nickname ?? "대장"),
             Setting(mainImage: "moon.fill", mainTitle: "다마고치 변경하기", subTitle: nil),
             Setting(mainImage: "arrow.clockwise", mainTitle: "데이터 초기화", subTitle: nil)
         ]
@@ -34,7 +40,7 @@ final class SettingViewController: UIViewController, ConfigureViewProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        settingList[0].subTitle = userDefaultsHelper.getNickname()
+        settingList[0].subTitle = UserDefaultsManager.nickname ?? "대장"
         
         settingTableView.reloadData()
     }
@@ -96,10 +102,10 @@ extension SettingViewController: UITableViewDelegate {
                                           message: message,
                                           preferredStyle: .alert)
             // 2. alert button 구성
-            let reset = UIAlertAction(title: "웅", style: .default) { [weak self] action in
-                guard let self else { return }
+            let reset = UIAlertAction(title: "웅", style: .default) { action in
                 
-                userDefaultsHelper.resetTamagochi()
+//                userDefaultsHelper.resetTamagochi()
+                UserDefaultsManager.removeAllUserDefaultsData()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: TamagotchiUsed.NotificationCenterName.resetButton), object: nil)
             }
             let cancel = UIAlertAction(title: "아냐!", style: .cancel)

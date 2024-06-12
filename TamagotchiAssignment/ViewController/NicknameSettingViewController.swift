@@ -50,7 +50,8 @@ final class NicknameSettingViewController: UIViewController, ConfigureViewProtoc
     }
     
     func configureNavigation() {
-        navigationItem.title = "\(userDefaultsHelper.getNickname())님 이름 정하기"
+//        navigationItem.title = "\(userDefaultsHelper.getNickname())님 이름 정하기"
+        navigationItem.title = "\(UserDefaultsManager.nickname ?? "대장")님 이름 정하기"
         
         let saveBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
         saveBarButtonItem.isEnabled = false
@@ -61,7 +62,8 @@ final class NicknameSettingViewController: UIViewController, ConfigureViewProtoc
     @objc
     private func saveButtonClicked() {
         guard let nickname = nameSettingTextField.text else { return }
-        userDefaultsHelper.setNickname(nickname)
+//        userDefaultsHelper.setNickname(nickname)
+        UserDefaultsManager.nickname = nickname
         navigationController?.popViewController(animated: true)
     }
     

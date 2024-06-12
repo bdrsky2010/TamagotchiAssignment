@@ -119,37 +119,48 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     
     private let userDefaultsHelper = UserDefaultsHelper.shared
     
-    private var nickname: String {
-        return userDefaultsHelper.getNickname()
-    }
-    
     private var tamagotchi: Tamagotchi? {
         get {
-            return userDefaultsHelper.getSelectTamagotchi()
+            guard let tamagotchies = UserDefaultsManager.tamagotchies else {
+                print("다마고치들을 못가져옴")
+                return nil
+            }
+            
+            guard let id = UserDefaultsManager.selectedTamagotchiID else {
+                print("아이디를 못가져옴")
+                return nil
+            }
+            
+            for tamagotchi in tamagotchies {
+                if id == tamagotchi.id {
+                    print("에엥에에에에에?")
+                    return tamagotchi
+                }
+            }
+            
+            return nil
+//            return userDefaultsHelper.getSelectTamagotchi()
         }
         set {
-            guard let newValue else { return }
-            userDefaultsHelper.setSelectTamagochi(newValue)
+            guard let newValue, var tamagotchies = UserDefaultsManager.tamagotchies else { return }
+            for i in 0..<tamagotchies.count {
+                if newValue.id == tamagotchies[i].id {
+                    tamagotchies[i] = newValue
+                }
+            }
+            UserDefaultsManager.tamagotchies = tamagotchies
+//            userDefaultsHelper.setSelectTamagochi(newValue)
             configureContent()
         }
     }
     
-    lazy var randomBubble: [String] = [
-        "\(nickname)님 오늘 깃허브 푸시 하셨어영?",
-        "\(nickname)님 오늘 과제 하셨어용?",
-        "콜렉션 뷰 어렵당 ㅠㅠ",
-        "\(nickname)님 토할거가타요ㅠㅁㅠ",
-        "목말라용 ~~~~~~",
-        "취업 언제 하냐고오오오",
-        "오토레이아웃 너무 어렵지 않나요???",
-        "\(nickname)님 저 너무 배가 고파욤 ㅠㅁㅠ"
-    ]
+    private var randomBubble: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
-        
+        configureNickname()
         configureNavigation()
         configureHierarchy()
         configureLayout()
@@ -162,11 +173,25 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        navigationItem.title = nickname + "님의 다마고치"
+        configureNickname()
+        configureContent()
     }
     
-    
+    private func configureNickname() {
+//        let nickname = userDefaultsHelper.getNickname()
+        let nickname = UserDefaultsManager.nickname ?? "대장"
+        navigationItem.title = nickname + "님의 다마고치"
+        randomBubble = [
+            "\(nickname) 오늘 깃허브 푸시 하셨어영?",
+            "\(nickname) 오늘 과제 하셨어용?",
+            "\(nickname) 콜렉션 뷰 어렵당 ㅠㅠ",
+            "\(nickname) 토할거가타요ㅠㅁㅠ",
+            "\(nickname) 목말라용 ~~~~~~",
+            "\(nickname) 취업 언제 하냐고오오오",
+            "\(nickname) 오토레이아웃 너무 어렵지 않나요???",
+            "\(nickname) 님 저 너무 배가 고파욤 ㅠㅁㅠ"
+        ]
+    }
     
     private func configureNotificationCenter() {
         NotificationCenter.default.addObserver(self,
@@ -307,6 +332,7 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     }
     
     func configureContent() {
+        print(#function)
         guard let tamagotchi else { return }
         
         randomBubbleLabel.text = randomBubble.randomElement()

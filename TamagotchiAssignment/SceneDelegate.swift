@@ -24,12 +24,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         var rootViewController: UIViewController
 
-        if userDefaultsHelper.getIsNotFirstMeetWithTamagotchi() {
+        if UserDefaultsManager.isFirstOpenedApp ?? false {
             rootViewController = TamagotchiViewController()
         } else {
             rootViewController = TamagotchiSelectViewController()
             (rootViewController as! TamagotchiSelectViewController).tamagotchiSelectType = .select
         }
+        
+//        if userDefaultsHelper.getIsNotFirstMeetWithTamagotchi() {
+//            rootViewController = TamagotchiViewController()
+//        } else {
+//            rootViewController = TamagotchiSelectViewController()
+//            (rootViewController as! TamagotchiSelectViewController).tamagotchiSelectType = .select
+//        }
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(selectButtonClicked),
