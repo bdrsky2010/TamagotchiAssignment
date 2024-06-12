@@ -19,7 +19,7 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
     
     private let contentView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.tamagotchiBackgroundColor
+        view.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
         return view
@@ -35,7 +35,7 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
     private let nameBackgroundView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.tamagotchiBorderColor.cgColor
+        view.layer.borderColor = TamagotchiUsed.Color.tamagotchiBorderColor.cgColor
         view.layer.cornerRadius = 5
         return view
     }()
@@ -44,21 +44,21 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
         let label = UILabel()
         label.text = "준비중이에요"
         label.font = .systemFont(ofSize: 14, weight: .bold)
-        label.textColor = UIColor.tamagotchiBorderColor
+        label.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         
         return label
     }()
     
     private let divider: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.tamagotchiBorderColor
+        view.backgroundColor = TamagotchiUsed.Color.tamagotchiBorderColor
         return view
     }()
     
     private let introduceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 13, weight: .bold)
-        label.textColor = UIColor.tamagotchiBorderColor
+        label.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -67,7 +67,7 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
     private let cancelButton: UIButton = {
         let button = UIButton()
         button.configuration = .plain()
-        button.backgroundColor = UIColor.tamagotchiButtonBackgroundColor
+        button.backgroundColor = TamagotchiUsed.Color.tamagotchiButtonBackgroundColor
         button.configureButtonTitleColorChangeOnByState(title: "취소")
         return button
     }()
@@ -80,7 +80,7 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
     
     private let buttonDivider: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.tamagotchilightBackgroundColor
+        view.backgroundColor = TamagotchiUsed.Color.tamagotchilightBackgroundColor
         return view
     }()
     
@@ -98,7 +98,7 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
     }
     
     var tamagotchi: Tamagotchi?
-    var tamagotchiSelectType: TamagotchiSelectType?
+    var tamagotchiSelectType: TamagotchiUsed.TamagotchiSelectType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -207,10 +207,10 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
             switch btn.state {
             case .highlighted:
                 btn.configuration?.attributedTitle = AttributedString(
-                    NSAttributedString(string: rightButtonTitle, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchilightBackgroundColor]))
+                    NSAttributedString(string: rightButtonTitle, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: TamagotchiUsed.Color.tamagotchilightBackgroundColor]))
             default:
                 btn.configuration?.attributedTitle = AttributedString(
-                    NSAttributedString(string: rightButtonTitle, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchiBorderColor]))
+                    NSAttributedString(string: rightButtonTitle, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: TamagotchiUsed.Color.tamagotchiBorderColor]))
             }
         }
         
@@ -235,6 +235,6 @@ final class TamagotchiPopupViewController: UIViewController, ConfigureViewProtoc
         userDefaultsHelper.setSelectTamagochi(tamagotchi)
         userDefaultsHelper.setIsNotFirstMeetWithTamagochi(true)
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationCenterName.selectButton), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: TamagotchiUsed.NotificationCenterName.selectButton), object: nil)
     }
 }

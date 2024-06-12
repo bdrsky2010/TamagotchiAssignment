@@ -12,13 +12,13 @@ extension UIButton {
         self.configurationUpdateHandler = { btn in
             switch btn.state {
             case .highlighted:
-                btn.configuration?.baseForegroundColor = UIColor.tamagotchilightBackgroundColor
+                btn.configuration?.baseForegroundColor = TamagotchiUsed.Color.tamagotchilightBackgroundColor
                 btn.configuration?.attributedTitle = AttributedString(
-                    NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchilightBackgroundColor]))
+                    NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: TamagotchiUsed.Color.tamagotchilightBackgroundColor]))
             default:
-                btn.configuration?.baseForegroundColor = UIColor.tamagotchiBorderColor
+                btn.configuration?.baseForegroundColor = TamagotchiUsed.Color.tamagotchiBorderColor
                 btn.configuration?.attributedTitle = AttributedString(
-                    NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchiBorderColor]))
+                    NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .bold), NSAttributedString.Key.foregroundColor: TamagotchiUsed.Color.tamagotchiBorderColor]))
             }
         }
     }

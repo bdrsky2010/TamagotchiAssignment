@@ -15,14 +15,14 @@ final class NicknameSettingViewController: UIViewController, ConfigureViewProtoc
         textField.attributedPlaceholder = NSAttributedString(
             string: "2~6자 사이로 입력해주세요", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold)])
         textField.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        textField.textColor = UIColor.tamagotchiBorderColor
+        textField.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         textField.borderStyle = .none
         return textField
     }()
     
     private let textFieldUnderBar: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.tamagotchiBorderColor
+        view.backgroundColor = TamagotchiUsed.Color.tamagotchiBorderColor
         return view
     }()
     
@@ -30,7 +30,7 @@ final class NicknameSettingViewController: UIViewController, ConfigureViewProtoc
         let button = UIButton()
         button.configuration = .plain()
         button.configuration?.image = UIImage(systemName: "xmark.circle.fill")
-        button.tintColor = UIColor.tamagotchiBorderColor
+        button.tintColor = TamagotchiUsed.Color.tamagotchiBorderColor
         button.configuration?.preferredSymbolConfigurationForImage = .init(pointSize: 14)
         button.isHidden = true
         return button
@@ -103,7 +103,7 @@ final class NicknameSettingViewController: UIViewController, ConfigureViewProtoc
     }
     
     private func configureBackground() {
-        view.backgroundColor = UIColor.tamagotchiBackgroundColor
+        view.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
         
         let backgroundTapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
         view.isUserInteractionEnabled = true

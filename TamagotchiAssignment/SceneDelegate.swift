@@ -33,12 +33,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(selectButtonClicked),
-                                               name: NSNotification.Name(rawValue: NotificationCenterName.selectButton),
+                                               name: NSNotification.Name(rawValue: TamagotchiUsed.NotificationCenterName.selectButton),
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(resetButtonClicked),
-                                               name: NSNotification.Name(rawValue: NotificationCenterName.resetButton),
+                                               name: NSNotification.Name(rawValue: TamagotchiUsed.NotificationCenterName.resetButton),
                                                object: nil)
         
         let navigationController = UINavigationController(rootViewController: rootViewController)
@@ -52,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func selectButtonClicked(_ sender: UIWindow) {
         let rootViewController = TamagotchiViewController()
         let navigationController = UINavigationController(rootViewController: rootViewController)
-        navigationController.navigationBar.standardAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
+        navigationController.navigationBar.standardAppearance.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
         
         window?.rootViewController = navigationController
     }
@@ -62,7 +62,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let rootViewController = TamagotchiSelectViewController()
         rootViewController.tamagotchiSelectType = .select
         let navigationController = UINavigationController(rootViewController: rootViewController)
-        navigationController.navigationBar.standardAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
+        navigationController.navigationBar.standardAppearance.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
         
         window?.rootViewController = navigationController
     }

@@ -19,7 +19,7 @@ class SettingTableViewCell: UITableViewCell, ConfigureViewProtocol {
     private let mainImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "pencil")
-        imageView.tintColor = UIColor.tamagotchiBorderColor
+        imageView.tintColor = TamagotchiUsed.Color.tamagotchiBorderColor
         imageView.preferredSymbolConfiguration = .init(pointSize: 14)
         return imageView
     }()
@@ -35,7 +35,7 @@ class SettingTableViewCell: UITableViewCell, ConfigureViewProtocol {
         let label = UILabel()
         label.text = "고래밥"
         label.font = .systemFont(ofSize: 14, weight: .regular)
-        label.textColor = .tamagotchiBorderColor
+        label.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         return label
     }()
     
@@ -43,13 +43,13 @@ class SettingTableViewCell: UITableViewCell, ConfigureViewProtocol {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.forward")
         imageView.preferredSymbolConfiguration = .init(pointSize: 14)
-        imageView.tintColor = UIColor.tamagotchilightBackgroundColor
+        imageView.tintColor = TamagotchiUsed.Color.tamagotchilightBackgroundColor
         return imageView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = UIColor.tamagotchiBackgroundColor
+        contentView.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
         
         configureHierarchy()
         configureLayout()

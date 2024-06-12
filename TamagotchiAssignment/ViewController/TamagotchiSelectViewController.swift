@@ -10,12 +10,29 @@ import SnapKit
 
 final class TamagotchiSelectViewController: UIViewController, ConfigureViewProtocol {
     
-    private let tamagotchiCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private let tamagotchiCollectionView: UICollectionView = {
+        let collectioViewLayout: UICollectionViewFlowLayout = {
+            
+            let layout = UICollectionViewFlowLayout()
+            let sectionSpacing: CGFloat = 16
+            let cellSpacing: CGFloat = 12
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                let width: CGFloat = windowScene.screen.bounds.width - (sectionSpacing * 2) - (cellSpacing * 3)
+                layout.minimumLineSpacing = cellSpacing
+                layout.minimumInteritemSpacing = cellSpacing
+                layout.itemSize = CGSize(width: width / 3, height: width / 2)
+                layout.sectionInset = UIEdgeInsets(
+                    top: 0, left: sectionSpacing, bottom: 0, right: sectionSpacing)
+            }
+            return layout
+        }()
+        return UICollectionView(frame: .zero, collectionViewLayout: collectioViewLayout)
+    }()
     
     private let userDefaultsHelper = UserDefaultsHelper.shared
     private var tamagotchies: [Tamagotchi] = []
     
-    var tamagotchiSelectType: TamagotchiSelectType?
+    var tamagotchiSelectType: TamagotchiUsed.TamagotchiSelectType?
     var navigationTitle: String {
         
         guard let tamagotchiSelectType else { return "" }
@@ -30,7 +47,7 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.tamagotchiBackgroundColor
+        view.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
         
         tamagotchies = userDefaultsHelper.getTamagotchies()
         configureHierarchy()
@@ -46,7 +63,7 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
     func configureLayout() {
         tamagotchiCollectionView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)/*.inset(16)*/
             make.bottom.equalToSuperview()
         }
     }
@@ -55,10 +72,10 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
         navigationItem.title = navigationTitle
         
         let navigationBarAppearance = UINavigationBarAppearance()
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchiBorderColor]
-        navigationBarAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold), NSAttributedString.Key.foregroundColor: TamagotchiUsed.Color.tamagotchiBorderColor]
+        navigationBarAppearance.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
         
-        navigationController?.navigationBar.tintColor = UIColor.tamagotchiBorderColor
+        navigationController?.navigationBar.tintColor = TamagotchiUsed.Color.tamagotchiBorderColor
         navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         
         if navigationController?.topViewController != self {
@@ -85,16 +102,8 @@ final class TamagotchiSelectViewController: UIViewController, ConfigureViewProto
     }
 }
 
-extension TamagotchiSelectViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let margin: CGFloat = 12
-        let width: CGFloat = (collectionView.bounds.width - (margin * 6)) / 3
-        let height: CGFloat = width * 1.4
-        
-        return CGSize(width: width, height: height)
-    }
-    
+extension TamagotchiSelectViewController: UICollectionViewDelegate {
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(#function, indexPath.row)
         

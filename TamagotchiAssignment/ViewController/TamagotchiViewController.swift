@@ -34,7 +34,7 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         let label = UILabel()
         label.text = "토할거가타요ㅠㅁㅠ"
         label.font = .systemFont(ofSize: 13, weight: .bold)
-        label.textColor = UIColor.tamagotchiBorderColor
+        label.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -50,7 +50,7 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     private let nameBackgroundView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.tamagotchiBorderColor.cgColor
+        view.layer.borderColor = TamagotchiUsed.Color.tamagotchiBorderColor.cgColor
         view.layer.cornerRadius = 5
         return view
     }()
@@ -59,7 +59,7 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         let label = UILabel()
         label.text = "준비중이에요"
         label.font = .systemFont(ofSize: 14, weight: .bold)
-        label.textColor = UIColor.tamagotchiBorderColor
+        label.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         return label
     }()
     
@@ -67,7 +67,7 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         let label = UILabel()
         label.text = "LV1 ∙ 밥알 0개 ∙ 물방울 0개"
         label.font = .systemFont(ofSize: 14, weight: .bold)
-        label.textColor = UIColor.tamagotchiBorderColor
+        label.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         label.textAlignment = .center
         return label
     }()
@@ -79,14 +79,14 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
             string: "밥주세용", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold)])
         textField.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         textField.textAlignment = .center
-        textField.textColor = UIColor.tamagotchiBorderColor
+        textField.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         textField.keyboardType = .numberPad
         return textField
     }()
     
     private let eatUnderBar: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.tamagotchiBorderColor
+        view.backgroundColor = TamagotchiUsed.Color.tamagotchiBorderColor
         return view
     }()
     
@@ -94,7 +94,7 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         let button = UIButton()
         button.configuration = .plain()
         button.configuration?.baseBackgroundColor = UIColor.clear
-        button.layer.borderColor = UIColor.tamagotchiBorderColor.cgColor
+        button.layer.borderColor = TamagotchiUsed.Color.tamagotchiBorderColor.cgColor
         button.layer.borderWidth = 1.5
         button.layer.cornerRadius = 5
         button.configuration?.image = UIImage(systemName: "leaf.circle")
@@ -111,7 +111,7 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
         textField.attributedPlaceholder = NSAttributedString(
             string: "물주세용", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold)])
         textField.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        textField.textColor = UIColor.tamagotchiBorderColor
+        textField.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         textField.textAlignment = .center
         textField.keyboardType = .numberPad
         return textField
@@ -119,15 +119,15 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     
     private let drinkUnderBar: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.tamagotchiBorderColor
+        view.backgroundColor = TamagotchiUsed.Color.tamagotchiBorderColor
         return view
     }()
     
     private let drinkButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.configuration = .plain()
         button.configuration?.baseBackgroundColor = UIColor.clear
-        button.layer.borderColor = UIColor.tamagotchiBorderColor.cgColor
+        button.layer.borderColor = TamagotchiUsed.Color.tamagotchiBorderColor.cgColor
         button.layer.borderWidth = 1.5
         button.layer.cornerRadius = 5
         button.configuration?.image = UIImage(systemName: "leaf.circle")
@@ -169,7 +169,7 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.tamagotchiBackgroundColor
+        view.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
         
         configureNavigation()
         configureHierarchy()
@@ -218,10 +218,10 @@ final class TamagotchiViewController: UIViewController, ConfigureViewProtocol {
     
     func configureNavigation() {
         let navigationBarAppearance = UINavigationBarAppearance()
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.tamagotchiBorderColor]
-        navigationBarAppearance.backgroundColor = UIColor.tamagotchiBackgroundColor
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold), NSAttributedString.Key.foregroundColor: TamagotchiUsed.Color.tamagotchiBorderColor]
+        navigationBarAppearance.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
         
-        navigationController?.navigationBar.tintColor = UIColor.tamagotchiBorderColor
+        navigationController?.navigationBar.tintColor = TamagotchiUsed.Color.tamagotchiBorderColor
         navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"),

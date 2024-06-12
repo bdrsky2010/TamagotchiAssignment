@@ -14,7 +14,6 @@ final class UserDefaultsHelper {
     private let tamagotchiKey = "tamagotchiKey"
     private let selectTamagotchiKey = "selectTamagotchiKey"
     private let nicknameKey = "nicknameKey"
-    private let tamagotchiTypeKey = "tamagotchiTypeKey"
     
     private init() { }
     
@@ -38,7 +37,7 @@ final class UserDefaultsHelper {
         
         return (0..<20).map { i in
             if i < 3 {
-                let tamagotchiType = TamagotchiType.allCases[i]
+                let tamagotchiType = TamagotchiUsed.TamagotchiType.allCases[i]
                 return Tamagotchi(isAvailable: true, id: tamagotchiType.id, name: tamagotchiType.name, introduce: tamagotchiType.introduce)
             }
             return Tamagotchi(isAvailable: false, id: -1, name: "", introduce: "")
@@ -95,6 +94,5 @@ final class UserDefaultsHelper {
         UserDefaults.standard.removeObject(forKey: tamagotchiKey)
         UserDefaults.standard.removeObject(forKey: selectTamagotchiKey)
         UserDefaults.standard.removeObject(forKey: nicknameKey)
-        UserDefaults.standard.removeObject(forKey: tamagotchiTypeKey)
     }
 }

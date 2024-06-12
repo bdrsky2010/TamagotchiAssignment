@@ -20,7 +20,7 @@ final class TamagotchiCollectionViewCell: UICollectionViewCell, ConfigureViewPro
     private let nameBackgroundView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.tamagotchiBorderColor.cgColor
+        view.layer.borderColor = TamagotchiUsed.Color.tamagotchiBorderColor.cgColor
         view.layer.cornerRadius = 5
         return view
     }()
@@ -29,7 +29,7 @@ final class TamagotchiCollectionViewCell: UICollectionViewCell, ConfigureViewPro
         let label = UILabel()
         label.text = "준비중이에요"
         label.font = .systemFont(ofSize: 11, weight: .bold)
-        label.textColor = UIColor.tamagotchiBorderColor
+        label.textColor = TamagotchiUsed.Color.tamagotchiBorderColor
         label.backgroundColor = .clear
         
         return label

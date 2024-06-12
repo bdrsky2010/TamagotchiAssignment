@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B1BF5532C17C0DF00FC02AC /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1BF5522C17C0DF00FC02AC /* UIButton+.swift */; };
+		7B1BF56B2C19115600FC02AC /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1BF56A2C19115600FC02AC /* UserDefault.swift */; };
 		7BD80CC12C134A01001F8E3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CC02C134A01001F8E3F /* AppDelegate.swift */; };
 		7BD80CC32C134A01001F8E3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CC22C134A01001F8E3F /* SceneDelegate.swift */; };
 		7BD80CC52C134A01001F8E3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CC42C134A01001F8E3F /* ViewController.swift */; };
@@ -21,7 +22,6 @@
 		7BD80CE42C14821B001F8E3F /* TamagotchiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CE32C14821B001F8E3F /* TamagotchiModel.swift */; };
 		7BD80CE92C1489B4001F8E3F /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CE82C1489B4001F8E3F /* UserDefaultsHelper.swift */; };
 		7BD80CEE2C14A636001F8E3F /* TamagotchiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CED2C14A636001F8E3F /* TamagotchiPopupViewController.swift */; };
-		7BD80CF12C14A7D1001F8E3F /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CF02C14A7D1001F8E3F /* UIColor+.swift */; };
 		7BD80CF32C157C5B001F8E3F /* TamagotchiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CF22C157C5B001F8E3F /* TamagotchiViewController.swift */; };
 		7BD80CF82C15CE31001F8E3F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CF72C15CE31001F8E3F /* SettingViewController.swift */; };
 		7BD80CFA2C15CE5C001F8E3F /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD80CF92C15CE5C001F8E3F /* UICollectionViewCell+.swift */; };
@@ -33,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		7B1BF5522C17C0DF00FC02AC /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		7B1BF56A2C19115600FC02AC /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		7BD80CBD2C134A01001F8E3F /* TamagotchiAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TamagotchiAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BD80CC02C134A01001F8E3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BD80CC22C134A01001F8E3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +48,6 @@
 		7BD80CE32C14821B001F8E3F /* TamagotchiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiModel.swift; sourceTree = "<group>"; };
 		7BD80CE82C1489B4001F8E3F /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		7BD80CED2C14A636001F8E3F /* TamagotchiPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiPopupViewController.swift; sourceTree = "<group>"; };
-		7BD80CF02C14A7D1001F8E3F /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		7BD80CF22C157C5B001F8E3F /* TamagotchiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiViewController.swift; sourceTree = "<group>"; };
 		7BD80CF72C15CE31001F8E3F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7BD80CF92C15CE5C001F8E3F /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
@@ -69,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B1BF5692C19113100FC02AC /* PropertyWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				7B1BF56A2C19115600FC02AC /* UserDefault.swift */,
+			);
+			path = PropertyWrapper;
+			sourceTree = "<group>";
+		};
 		7BD80CB42C134A01001F8E3F = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +103,7 @@
 				7BD80CE52C148961001F8E3F /* Model */,
 				7BD80CE72C148983001F8E3F /* ViewController */,
 				7BD80CE62C148969001F8E3F /* Helper */,
+				7B1BF5692C19113100FC02AC /* PropertyWrapper */,
 				7BD80CD82C1351EE001F8E3F /* Protocol */,
 				7BD80CEF2C14A7C1001F8E3F /* Extension */,
 				7BD80CC92C134A02001F8E3F /* Assets.xcassets */,
@@ -145,7 +154,6 @@
 		7BD80CEF2C14A7C1001F8E3F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7BD80CF02C14A7D1001F8E3F /* UIColor+.swift */,
 				7BD80CF92C15CE5C001F8E3F /* UICollectionViewCell+.swift */,
 				7BD80CFB2C15CE65001F8E3F /* UITableViewCell+.swift */,
 				7BD80D012C16007B001F8E3F /* UINavigationController+.swift */,
@@ -239,11 +247,11 @@
 				7BD80CF82C15CE31001F8E3F /* SettingViewController.swift in Sources */,
 				7BD80CD52C134E55001F8E3F /* TamagotchiSelectViewController.swift in Sources */,
 				7BD80CFE2C15CEA5001F8E3F /* SettingTableViewCell.swift in Sources */,
-				7BD80CF12C14A7D1001F8E3F /* UIColor+.swift in Sources */,
 				7BD80CF32C157C5B001F8E3F /* TamagotchiViewController.swift in Sources */,
 				7BD80CFA2C15CE5C001F8E3F /* UICollectionViewCell+.swift in Sources */,
 				7BD80CDC2C1352A5001F8E3F /* TamagotchiCollectionViewCell.swift in Sources */,
 				7BD80CC12C134A01001F8E3F /* AppDelegate.swift in Sources */,
+				7B1BF56B2C19115600FC02AC /* UserDefault.swift in Sources */,
 				7B1BF5532C17C0DF00FC02AC /* UIButton+.swift in Sources */,
 				7BD80CE42C14821B001F8E3F /* TamagotchiModel.swift in Sources */,
 				7BD80D002C15DF90001F8E3F /* NicknameSettingViewController.swift in Sources */,

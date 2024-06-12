@@ -17,7 +17,7 @@ final class SettingViewController: UIViewController, ConfigureViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.tamagotchiBackgroundColor
+        view.backgroundColor = TamagotchiUsed.Color.tamagotchiBackgroundColor
         
         settingList = [
             Setting(mainImage: "pencil", mainTitle: "내 이름 설정하기", subTitle: userDefaultsHelper.getNickname()),
@@ -100,7 +100,7 @@ extension SettingViewController: UITableViewDelegate {
                 guard let self else { return }
                 
                 userDefaultsHelper.resetTamagochi()
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationCenterName.resetButton), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: TamagotchiUsed.NotificationCenterName.resetButton), object: nil)
             }
             let cancel = UIAlertAction(title: "아냐!", style: .cancel)
             
